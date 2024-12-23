@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊頁面</title>
+    <script>
+        // 預設帳號資料初始化
+        if (!localStorage.getItem("accounts")) {
+            const defaultAccounts = {
+                "admin": "00000000",
+                "user1": "12345678"
+            };
+            localStorage.setItem("accounts", JSON.stringify(defaultAccounts));
+        }
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // 從 LocalStorage 中取得帳號資料
+            const accounts = JSON.parse(localStorage.getItem("accounts"));
+
+            if (accounts[username] === password) {
+                // 儲存登入帳號
+                localStorage.setItem("loggedInUser", username);
+
+                // 跳轉到首頁
+                window.location.href = "index.html";
+            } else {
+                document.getElementById("message").innerHTML = 
+                    `<p style="color:red;">登入失敗，帳號或密碼錯誤。</p>`;
+            }
+        }
+    </script>    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+    
+        body {
+            background-color: #B2B2A2;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            display: grid;
+            grid-template-rows: 5% 3fr 5fr 7%; 
+            grid-template-columns: 1fr; 
+            height: 100%; 
+        }
+    
+          /* HEADER部分 */
+        header {
+            background-color: #4D6A6D; 
+            grid-row: 1; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 75px; 
+            min-height: 70px; 
+            flex-wrap: nowrap;
+        }
+    
+        .search-box::placeholder {
+            font-size: 15px; 
+            color: #999; 
+            font-style: italic; 
+        }
+    
+        .search-container {
+            display: flex; 
+            gap: 5px; 
+        }
+    
+        .search-box {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 20px;    
+        }
+    
+        .search-button {
+            padding: 8px 16px;
+            background-color: #EAE0CC;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    
+        .search-button:hover {
+            background-color: #D6CDBA;
+        }
+    
+        .nav-links {
+            display: flex; 
+            gap: 15px; 
+            margin-left: 211px; 
+            align-items: center;
+            height: 40px;
+        }
+    
+    
+        .nav-links > a,
+        .dropdown > .title {
+            text-decoration: none; 
+            color: #EAE0CC; 
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px; /* 固定高度 */
+            box-sizing: border-box; /* 確保padding不會影響整體高度 */
+        }
+    
+        .nav-links a:hover,
+        .dropdown .title:hover {
+            background-color: #EAE0CC; 
+            color: #4D6A6D; 
+        }
+    
+        .dropdown {
+            position: relative;
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+    
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
+            left: 0;
+            background-color: #EAE0CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+            min-width: 150px;
+        }
+    
+        .dropdown-content a {
+            display: block;
+            color: #4D6A6D;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 15px;
+            text-align: center;
+        }
+    
+        .dropdown-content a:hover {
+            background-color: #4D6A6D;
+            color: #EAE0CC;
+        }
+    
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    
+        .user-links {
+            position: absolute; 
+            right: 100px; 
+            top: 15px; 
+            display: flex;
+            gap: 20px; 
+            font-size: 14px;
+        }
+    
+        .user-links a {
+            text-decoration: none;
+            color: #EAE0CC;
+            font-weight: bold;
+        }
+    
+        .user-links a:hover {
+            background-color: #EAE0CC;
+            color: #4D6A6D;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    
+            /* MAIN部分 */
+    
+            main {
+            background-color: #B2B2A2; 
+            grid-row: 2/4; /* 第二行 */
+            position: relative; 
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 全屏高度 */
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 40px; /* 與父元素高度相同 */
+            left: 0;
+            background-color: #EAE0CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+            min-width: 150px;
+        }
+    
+        .dropdown {
+            position: relative;
+            height: 40px; /* 與其他導航項目相同的高度 */
+            display: flex;
+            align-items: center;
+        }
+    
+        /* 确保下拉菜单项是块级元素 */
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            text-align: center;
+        }
+    
+        .dropdown-content a:hover {
+            background-color: #4D6A6D;
+            color: #EAE0CC;
+        }
+    
+        .dropdown:hover .dropdown-content {
+            display: block; /* 滑鼠懸停時顯示選單 */
+        }
+    
+        .rectangle {
+            width: 400px;
+            padding: 20px;
+            background-color: #EAE0CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            text-align: center;
+        }
+    
+        .rectangle h2 {
+            margin-bottom: 20px;
+            color: #4D6A6D;
+        }
+    
+        .rectangle input {
+            width: calc(100% - 20px); /* 输入框宽度 */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            outline: none; /* 移除默认焦点边框 */
+        }
+    
+        .rectangle button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4D6A6D;
+            color: #EAE0CC;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    
+        .rectangle button:hover {
+            background-color: #3B5052;
+        }
+    
+    
+        /* FOOTER部分 */
+    
+        footer {
+    
+            background-color: #4D6A6D; 
+            grid-row: 4;     
+            color: #212529;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+    
+        footer a:hover {
+    
+            text-decoration: underline;
+        }
+    
+    
+        .back-to-top {
+    
+            display: block;
+            margin-top: 15px;
+            color: #333;
+            font-weight: bold;
+    
+        }
+    
+    
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="search-container">
+                <input type="text" placeholder="搜尋商品..." class="search-box">
+                <button class="search-button">搜尋</button>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">首頁</a>
+                <div class="dropdown">
+                    <div class="title">商品</div>  <!-- 改為 div 而不是 a 標籤 -->
+                    <div class="dropdown-content">
+                        <a href="goods.html">All</a>
+                        <a href="product1.html">Kaweco</a>
+                        <a href="product2.html">Lamy</a>
+                        <a href="product3.html">Montreux</a>            
+                    </div>
+                </div>
+            </nav>
+            <div class="user-links">
+                <a href="login.html">登入</a>
+                <a href="register.html">註冊</a>
+                <a href="cart.html">購物車</a>
+            </div>
+        </header>
+    </div>
+        <main>
+            <div  class="rectangle">
+                <h2>登入頁面</h2>
+                <form onsubmit="event.preventDefault(); login();">
+                    <label for="username">帳號:</label><br>
+                    <input type="text" id="username" ><br>
+                    <label for="password">密碼:</label><br>
+                    <input type="password" id="password" required><br>
+                    <button type="submit">登入</button>
+                </form>
+                <div id="message"></div>
+            </div>
+        </main>
+        <section>
+
+        </section>
+
+        <footer>
+            <div class="footer-content">
+              <p>© 2024 第十九組. All rights reserved.</p>
+              <p>聯絡我們：<a href="mailto:zwqq1891@gmail.com">zwqq1891@gmail.com</a></p>
+              <a href="#top" class="back-to-top">回到頂端 ↑</a>
+            </div>
+          </footer>
+</body>
+</html>

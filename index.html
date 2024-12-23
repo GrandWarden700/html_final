@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    body {
+        height: 200vh; /* 設定 body 高度超過視窗高度，讓網頁可以滾動 */
+        background-color: #B2B2A2;
+    }
+
+    .container {
+        display: grid;
+        grid-template-rows: 5% 3fr 5fr 7%; 
+        grid-template-columns: 1fr; 
+        height: 100%; 
+    }
+
+      /* HEADER部分 */
+      header {
+    background-color: #4D6A6D; 
+    grid-row: 1; 
+    display: flex; 
+    align-items: center; 
+    padding: 0 75px; 
+    min-height: 70px; 
+    flex-wrap: nowrap;
+}
+
+.search-box::placeholder {
+    font-size: 15px; 
+    color: #999; 
+    font-style: italic; 
+}
+
+.search-container {
+    display: flex; 
+    gap: 5px; 
+}
+
+.search-box {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;    
+}
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #EAE0CC;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #D6CDBA;
+}
+
+.nav-links {
+    display: flex; 
+    gap: 15px; 
+    margin-left: 211px; 
+    align-items: center;
+    height: 40px;
+}
+
+
+.nav-links > a,
+.dropdown > .title {
+    text-decoration: none; 
+    color: #EAE0CC; 
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px; /* 固定高度 */
+    box-sizing: border-box; /* 確保padding不會影響整體高度 */
+}
+
+.nav-links a:hover,
+.dropdown .title:hover {
+    background-color: #EAE0CC; 
+    color: #4D6A6D; 
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
+    left: 0;
+    background-color: #EAE0CC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 10;
+    min-width: 150px;
+}
+
+.dropdown-content a {
+    display: block;
+    color: #4D6A6D;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #4D6A6D;
+    color: #EAE0CC;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.user-links {
+    position: absolute; 
+    right: 100px; 
+    top: 15px; 
+    display: flex;
+    gap: 20px; 
+    font-size: 14px;
+}
+
+.user-links a {
+    text-decoration: none;
+    color: #EAE0CC;
+    font-weight: bold;
+}
+
+.user-links a:hover {
+    background-color: #EAE0CC;
+    color: #4D6A6D;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+    /* MAIN部分 */
+
+    main {
+        background-image: url(img/CoupleSentences.jpg);
+        grid-row: 2; /* 第二行 */
+        position: relative; 
+    }
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 40px; /* 與父元素高度相同 */
+    left: 0;
+    background-color: #EAE0CC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 10;
+    min-width: 150px;
+}
+
+.dropdown {
+    position: relative;
+    height: 40px; /* 與其他導航項目相同的高度 */
+    display: flex;
+    align-items: center;
+}
+
+/* 确保下拉菜单项是块级元素 */
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+    .dropdown-content a:hover {
+        background-color: #4D6A6D;
+        color: #EAE0CC;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block; /* 滑鼠懸停時顯示選單 */
+    }
+
+    .rectangle {
+
+        width: 750px; 
+        height: 450px; 
+        background-color: #EAE0CC; 
+        position: absolute;
+        right: 5%; 
+        top: 50%; 
+        transform: translateY(-50%); /* 精確居中 */
+        opacity: 0.9;
+        font-family: "新細明體", "PMingLiU", serif;
+        padding: 100px; /* 增加內邊距確保文字不緊貼邊界 */
+        text-align: left; /* 文字靠左對齊 */
+        overflow: auto; /* 防止文字溢出 */
+        line-height: 1.6; /* 增加行高，提升可讀性 */
+    }
+
+    .rectangle p {
+        margin-top: 25px; /* 將段落文字往下移動 */
+    }
+
+    /*JS部分*/
+    .product-box {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 讓商品容器水平排列 */
+.product-box > div {
+    display: flex;
+    flex-direction: row;  /* 確保水平排列 */
+    flex-wrap: wrap;      /* 允許換行 */
+    justify-content: center;
+    gap: 20px;           /* 商品之間的間距 */
+    max-width: 1200px;   /* 限制最大寬度，避免過寬 */
+}
+
+/* 個別商品的樣式 */
+.product-div {
+    width: 200px; /* 固定每個商品區塊的寬度 */
+    flex: 0 0 auto;      /* 避免商品被拉伸 */
+    flex-wrap: wrap; /* 使每行換行 */
+    width: 250px;        /* 固定商品寬度 */
+    background-color: transparent;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    justify-content: center;
+}
+.product-div:hover {
+        transform: scale(1.05); /* 讓商品區塊在懸停時略微放大 */
+      }
+
+.product-div .img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain; /* 保持圖片比例 */
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product-price {
+    color: #4D6A6D;
+    font-weight: bold;
+}
+
+.product-description {
+  display: none; /* 隱藏商品描述 */
+}
+
+    /* SETION部分 */
+
+    section {
+
+        background-color: #B2B2A2; 
+        grid-row: 3; 
+    }
+
+    /* FOOTER部分 */
+
+    footer {
+
+        background-color: #4D6A6D; 
+        grid-row: 4;     
+        color: #212529;
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid #dee2e6;
+    }
+
+    footer a:hover {
+
+        text-decoration: underline;
+    }
+
+
+    .back-to-top {
+    display: inline-block; /* 保持在容器內 */
+    margin-top: 15px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none; /* 取消預設下劃線 */
+    padding: 5px 10px; /* 增加內邊距 */
+    border-radius: 5px; /* 圓角 */
+    transition: background 0.3s; /* 增加滑鼠懸停效果 */
+}
+
+.back-to-top:hover {
+    background-color: #dee2e6; /* 滑鼠懸停效果 */
+    text-decoration: underline;
+}
+
+
+</style>
+<body>
+    <div class="container">
+        <header>
+            <div class="search-container">
+                <input type="text" placeholder="搜尋商品..." class="search-box">
+                <button class="search-button">搜尋</button>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">首頁</a>
+                <div class="dropdown">
+                    <div class="title">商品</div>  <!-- 改為 div 而不是 a 標籤 -->
+                    <div class="dropdown-content">
+                        <a href="goods.html">All</a>
+                        <a href="product1.html">Kaweco</a>
+                        <a href="product2.html">Lamy</a>
+                        <a href="product3.html">Montreux</a>            
+                    </div>
+                </div>
+            </nav>
+            <div class="user-links">
+                <a href="login.html">登入</a>
+                <a href="register.html">註冊</a>
+                <a href="cart.html">購物車</a>
+            </div>
+        </header>
+        <main>
+            <div class="rectangle">
+                <h1>每一筆都是創造</h1><hr>
+                <p>創作理念、品牌意義、做工細緻度、創作理念、品牌意義、做工細緻度、
+                    創作理念、品牌意義、做工細緻度、創作理念、品牌意義、做工細緻度
+                    創作理念、品牌意義、做工細緻度、創作理念、品牌意義、做工細緻度
+                    創作理念、品牌意義、做工細緻度創作理念、品牌意義、做工細緻度、創作理念、品牌意義、做工細緻度、
+                    創作理念、品牌意義、做工細緻度、創作理念、品牌意義、做工細緻度
+                    創作理念、品牌意義、做工細緻度、創作理念、品牌意義、做工細緻度創作理念、品牌意義、做工細緻</p>
+            </div>
+        </main>
+        <section>
+            <div class="hot_title">熱銷商品</div>
+            <div class="product-box">
+              <div class="product-div">
+                <img class="img" src="" alt="商品圖片" />
+                <span class="product-title"></span>
+                <span class="product-price"></span>
+                <span class="product-description"></span>
+              </div>
+            </div>
+        </section>
+    </div>
+        <footer>
+            <div class="footer-content">
+              <p>© 2024 創造有限公司. All rights reserved.</p>
+              <p>聯絡我們：<a href="mailto:zwqq1891@gmail.com">zwqq1891@gmail.com</a></p>
+              <a href="#top" class="back-to-top">回到頂端 ↑</a>
+            </div>
+          </footer>
+    
+    <script>
+        window.onload = function () {
+            const loggedInUser = localStorage.getItem("loggedInUser");
+            const userLinks = document.querySelector(".user-links");
+
+            if (loggedInUser) {
+                // 建立歡迎訊息
+                const welcomeMessage = document.createElement("span");
+                welcomeMessage.textContent = `歡迎 ${loggedInUser}`;
+                welcomeMessage.style.color = "#EAE0CC";
+                welcomeMessage.style.fontWeight = "bold";
+
+                // 建立登出按鈕
+                const logoutButton = document.createElement("button");
+                logoutButton.textContent = "登出";
+                logoutButton.style.color = "#EAE0CC";
+                logoutButton.style.fontWeight = "bold";
+                logoutButton.style.backgroundColor = "#4D6A6D";
+                logoutButton.style.cursor = "pointer";
+                logoutButton.addEventListener("click", function () {
+                    // 清除 LocalStorage 的登入資料
+                    localStorage.removeItem("loggedInUser");
+                    // 重新導向到首頁
+                    window.location.href = "index.html";
+                });
+
+                // 添加歡迎訊息和登出按鈕到 user-links
+                userLinks.prepend(welcomeMessage);
+                userLinks.appendChild(logoutButton);
+            } ;
+            };
+    </script>
+        <script src="/js/hot.js"></script>
+</body>
+</html>

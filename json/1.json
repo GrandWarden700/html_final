@@ -1,0 +1,15 @@
+[
+    {
+      "name": "商品 A",
+      "price": 500,
+      "image": "./img/lamy/1.webp",
+      "description": "這是一個高品質的商品 A。"
+    },
+    {
+      "name": "商品 B",
+      "price": 800,
+      "image": "product-b.jpg",
+      "description": "這是一個高品質的商品 B。"
+    }
+  ]
+  

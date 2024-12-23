@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品展示頁面</title>
+    <style>
+      @import url("css/header.css");
+      
+      h2 {
+        text-align: center;
+        font-size: 24px;
+      }
+      .img {
+        width: 500px;
+        margin-left: 6%;
+        margin-top: 10%;
+        height: fit-content;
+        max-width: 500px;
+        max-height: 300px;
+        object-fit: cover;
+      }
+      .product-container {
+        display: grid;
+        grid-template-columns: 1fr; /* 單列布局 */
+        gap: 0px;
+      }
+
+      .title {
+        justify-self: end; /* 讓標題在 Grid 容器內靠右對齊 */
+        font-size: 30px;
+        color: #8d5959;
+      }
+
+      /* ... (other styles) */
+      .product-container {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column layout */
+            gap: 20px; /* Add some spacing between elements */
+            align-items: start; /* Align items to the top of their grid area */
+        }
+
+        .product-price, .product-description {
+            /* Style the price and description as needed */
+            margin-top: 10px; /* Add some spacing above the price/description */
+            grid-column: 1; /* Ensure they span the full width */
+        }
+  
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="search-container">
+          <input type="text" placeholder="搜尋商品..." class="search-box">
+          <button class="search-button">搜尋</button>
+      </div>
+      <nav class="nav-links">
+          <a href="index.html">首頁</a>
+          <div class="dropdown">
+              <div class="title">商品</div>  <!-- 改為 div 而不是 a 標籤 -->
+              <div class="dropdown-content">
+                  <a href="goods.html">All</a>
+                  <a href="product1.html">Kaweco</a>
+                  <a href="product2.html">Lamy</a>
+                  <a href="product3.html">Montreux</a>            
+              </div>
+          </div>
+      </nav>
+      <div class="user-links">
+          <a href="login.html">登入</a>
+          <a href="register.html">註冊</a>
+          <a href="cart.html">購物車</a>
+      </div>
+  </header>
+    <main>
+      <div class="">
+        <h1></h1>
+      </div>
+      <div class="product-container">
+        <img class="img" src="" alt="商品圖片" />
+        <div class="title">
+          <span class="product-title"></span>
+        </div>
+        <span class="product-price"></span>
+        <span class="product-description"></span>
+      </div>
+    </main>
+    <script src="/js/a1.js"></script>
+  </body>
+</html>
+

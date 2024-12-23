@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+    <link rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .cart-item p {
+            margin: 0;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .quantity input {
+            width: 50px;
+            text-align: center;
+        }
+
+        .actions button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .actions button.remove {
+            background-color: #f44336;
+        }
+
+        .actions button:hover {
+            opacity: 0.9;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- ... (header content from proto.html/style.css) ... -->
+        </header>
+        <main>
+            <div id="cart-items"></div>
+            <div class="total">
+                總金額: <span id="total-price">0</span> 元
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="checkout()">結帳</button>
+            </div>
+        </main>
+        <section>
+            <!-- ... (if needed) ... -->
+        </section>
+        <footer>
+            <!-- ... (footer content from proto.html/style.css) ... -->
+        </footer>
+    </div>
+    <script src="/js/cart.js"></script>
+</body>
+</html>

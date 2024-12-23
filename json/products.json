@@ -1,0 +1,100 @@
+[
+    {
+        "category":"montreux",
+        "product":
+        [
+            {
+                "name":"=小品雅集= 臺灣 MONTREUX 夢多 復古色系 鋼筆",
+                "price": 700,
+                "image": "./img/montreux/1.jpg",
+                "url": "./a1.html",
+                "description": "法國製的筆尖，滑順好寫的手感<br>配上亮紅的賽璐珞材質筆桿<br>筆桿長度約：13.7cm<br>直徑約：0.9cm<br>筆身材質：金屬<br>筆尖：不鏽鋼鍍金尖<br>粗細：歐規EF<br>"
+            },
+            {
+                "name":"=小品雅集= 臺灣 MONTREUX 夢多 賽璐珞 鋼筆",
+                "price": 1500,
+                "image": "./img/montreux/2.jpg",
+                "description": "法國製的筆尖，滑順好寫的手感<br>配上亮紅的賽璐珞材質筆桿<br>筆桿長度約：12.7cm<br>直徑約：1.3cm<br>筆身材質：賽璐珞<br>筆尖：不鏽鋼 EF尖"
+            } 
+        ]
+    },
+    {
+        "category":"Kaweco",
+        "product":
+        [
+            {
+                "name":"=小品雅集= 德國 Kaweco sport 鋼筆（奶茶色）",
+                "price":1015,
+                "image": "./img/kaweco/1.webp",
+                "description": "筆身：樹脂<br>字幅選擇：EF/F/M<br>尺寸：合上筆蓋10.3cm、筆蓋插在筆桿後12.6cm<br>附：卡水，原廠紙盒包裝"
+            },
+            {
+                "name":"=小品雅集=德國 Kaweco 推拉式 短鋼專用 ",
+                "price":226,
+                "image": "./img/kaweco/2.webp",
+                "description": "KAWECO的短鋼皆可使用<br>推拉吸墨器<br>使用方法：<br>1.將吸墨器裝在筆上<br>2.將拉桿推到底<br>3.整個筆尖浸入墨水中<br>4.把拉桿往後拉到底<br>5.即可取出完成吸墨"
+            },
+            {
+                "name":"=小品雅集= 德國 Kaweco sport 鋼筆（暗綠色）",
+                "price":1015 ,
+                "image": "./img/kaweco/3.webp",
+                "description": "筆身：樹脂<br>字幅選擇：EF/F/M 三種可選<br>尺寸：合上筆蓋10.3cm、筆蓋插在筆桿後12.6cm<br>附贈：卡水，原廠紙盒包裝"
+            },
+            {
+                "name":"=小品雅集= 德國 Kaweco sport 鋼筆（黑色金尖）",
+                "price":1415,
+                "image": "./img/kaweco/4.webp",
+                "description": "筆身：樹脂<br>字幅選擇：EF/F/M<br>尺寸：合上筆蓋10.3cm、筆蓋插在筆桿後12.6cm<br>附贈：卡水，原廠紙盒包裝"
+            },
+            {
+                "name":"=小品雅集=德國 Kaweco sport 鋼筆（暗紅色）",
+                "price":1390,
+                "image": "./img/kaweco/5.webp",
+                "description": "筆身：樹脂<br>字幅選擇：EF/F/M<br>尺寸：合上筆蓋10.3cm、筆蓋插在筆桿後12.6cm<br>附贈：卡水，原廠紙盒包裝"
+            },
+            {
+                "name":"=小品雅集=德國 Kaweco sport 鋼筆（薄荷綠）",
+                "price":1215,
+                "image": "./img/kaweco/6.webp",
+                "description": "筆身：樹脂<br>字幅選擇：EF/F/M<br>尺寸：合上筆蓋10.3cm、筆蓋插在筆桿後12.6cm<br>附贈：卡水，原廠紙盒包裝<br>可另外加購吸墨器使用<br>推拉式吸墨器一個$197<br>按壓式吸墨器一個$110"
+            }  
+        ]
+    },
+    {
+        "category":"lamy",
+        "product":
+        [
+            {
+                "name":"=小品雅集=德國 Lamy Safari 狩獵系列 鋼筆（全透明）",
+                "price":750,
+                "image": "./img/lamy/1.webp",
+                "description": "適合初學者使用，人體工學的輔助握位設計<br>筆桿皆有觀墨窗可以看見墨水存量<br>筆身材質：樹脂材質<br>筆尖：不鏽鋼尖 EF、 F 尖<br>附原廠筆盒，吸墨器，卡式墨水*1支<br><hr>請注意：<br>1.Lamy筆款出廠前會將筆尖沾墨試寫測試看看，且不會清洗表示筆尖沒問題<br>所以若是一開始要灌比較淺色的墨水，建議將筆洗淨後再灌墨，避免影響顏色。<br>2.新筆筆身上會有防護條（咖啡色紙圈），使用前請將之取下即可開始使用。"
+            },
+            {
+                "name":"=小品雅集=德國 Lamy AL-star 恆星系列鋼筆（霧黑）",
+                "price":1150,
+                "image": "./img/lamy/2.webp",
+                "description": "適合初學者使用，人體工學的輔助握位設計<br>筆桿皆有觀墨窗可以看見墨水存量<br>鋁合金材質<br>筆尖 EF/ F /M 可選"
+            },
+            {
+                "name":"=小品雅集= 德國 Lamy AL-star 恆星系列鋼筆 (紫紅色)",
+                "price":1421 ,
+                "image": "./img/lamy/3.webp",
+                "description": "鋁合金材質<br>筆桿皆有觀墨窗可以看見墨水存量"
+            },
+            {
+                "name":"=小品雅集= 德國 Lamy AL-star 恆星系列鋼筆 鐵灰色",
+                "price":1160,
+                "image": "./img/lamy/4.webp",
+                "description": "適合初學者使用，人體工學的輔助握位設計<br>筆桿皆有觀墨窗可以看見墨水存量<br>鋁合金材質<br>筆尖 不鏽鋼尖 EF（缺）、F尖可選<br>附原廠筆盒，吸墨器，卡式墨水*1支<br>請注意：<br>1.Lamy筆款出廠前會將筆尖沾墨試寫測試看看，且不會清洗表示筆尖沒問題<br>所以若是一開始要灌比較淺色的墨水，建議將筆洗淨後再灌墨，避免影響顏色。<br>2.新筆筆身上會有防護條（咖啡色紙圈），使用前請將之取下即可開始使用。"
+            },
+            {
+                "name":"=小品雅集= 德國 Lamy AL-star 恆星系列鋼筆 海藍色",
+                "price":1150,
+                "image": "./img/lamy/5.webp",
+                "description": "適合初學者使用，人體工學的輔助握位設計<br>筆桿皆有觀墨窗可以看見墨水存量<br>鋁合金材質"
+            }
+        ]
+    }
+]
+    
