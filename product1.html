@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>網頁公版</title>
+    <title>Lamy</title>
 </head>
 <style>
     * {
@@ -12,8 +12,7 @@
     }
 
     body {
-        height: 200vh; /* 設定 body 高度超過視窗高度，讓網頁可以滾動 */
-        background-color: #B2B2A2;
+        height: 200vh;
     }
 
     .container {
@@ -23,8 +22,8 @@
         height: 100%; 
     }
 
-      /* HEADER部分 */
-      header {
+    /* HEADER部分 */
+    header {
         background-color: #4D6A6D; 
         grid-row: 1; 
         display: flex; 
@@ -159,11 +158,74 @@
     /* MAIN部分 */
 
     main {
-        background-image: url(img/CoupleSentences.jpg);
-        grid-row: 2; /* 第二行 */
-        position: relative; 
-    }
-    .dropdown-content {
+        background-color: #B2B2A2; 
+        grid-row: 2/4; 
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .img {
+        width: 500px;
+        height: fit-content;
+        max-width: 500px;
+        max-height: 300px;
+        object-fit: cover;
+      }
+      .product-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+      }
+      .product-box > div {
+        display: flex;
+        flex-wrap: wrap; /* 使每行換行 */
+        justify-content: center; /* 置中對齊商品區塊 */
+        gap: 10px; /* 商品間距 */
+      }
+      .product-div {
+        width: 200px; /* 固定每個商品區塊的寬度 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+        justify-content: center;
+      }
+      .product-div:hover {
+        transform: scale(1.05); /* 讓商品區塊在懸停時略微放大 */
+      }
+
+      .product-div .img {
+        width: 100px;  /* 固定圖片寬度 */
+        height: 100px; /* 固定圖片高度 */
+        object-fit: contain; /* 保持圖片比例 */
+      }
+
+      .product-title {
+        font-size: 1.1rem; /* 縮小商品名稱字體 */
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      .product-price {
+        font-size: 1rem; /* 縮小價格字體 */
+        text-align: center;
+        margin: 5px 0;
+      }
+
+      .product-description {
+        display: none; /* 隱藏商品描述 */
+      }
+      .dropdown-content {
     display: none;
     position: absolute;
     top: 40px; /* 與父元素高度相同 */
@@ -221,18 +283,9 @@
 
     }
 
-    /* SETION部分 */
-
-    section {
-
-        background-color: #B2B2A2; 
-        grid-row: 3; 
-    }
-
     /* FOOTER部分 */
 
     footer {
-
         background-color: #4D6A6D; 
         grid-row: 4;     
         color: #212529;
@@ -246,16 +299,26 @@
         text-decoration: underline;
     }
 
-
-    .back-to-top {
-
-        display: block;
-        margin-top: 15px;
-        color: #333;
-        font-weight: bold;
-
+    .footer-content{
+        background-color: #4D6A6D; 
     }
 
+
+    .back-to-top {
+    display: inline-block; /* 保持在容器內 */
+    margin-top: 15px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none; /* 取消預設下劃線 */
+    padding: 5px 10px; /* 增加內邊距 */
+    border-radius: 5px; /* 圓角 */
+    transition: background 0.3s; /* 增加滑鼠懸停效果 */
+}
+
+.back-to-top:hover {
+    background-color: #dee2e6; /* 滑鼠懸停效果 */
+    text-decoration: underline;
+}
 
 </style>
 <body>
@@ -283,14 +346,16 @@
                 <a href="cart.html">購物車</a>
             </div>
         </header>
-    </div>
         <main>
-
+              <div class="product-box">
+                <div class="product-div">
+                  <img class="img" src="" alt="商品圖片" />
+                  <span class="product-title"></span>
+                  <span class="product-price"></span>
+                  <span class="product-description"></span>
+                </div>
+              </div>
         </main>
-        <section>
-
-        </section>
-
         <footer>
             <div class="footer-content">
               <p>© 2024 創造有限公司. All rights reserved.</p>
@@ -298,5 +363,6 @@
               <a href="#top" class="back-to-top">回到頂端 ↑</a>
             </div>
           </footer>
+        <script src="js/kaweco.js"></script>
 </body>
 </html>

@@ -1,0 +1,173 @@
+
+.center-css {
+  margin-left: 20%;
+  margin-top: 10px;
+}
+.goods {
+    margin-left: 800px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    width: 380px;
+    height: 480px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 10px inset rgba(206, 202, 135, 0.722);
+    cursor: pointer;
+}
+
+.goods img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(1, 1);
+    transition: transform 0.5s;
+}
+
+.goods:hover img{
+    transform: scale(1.9, 1.9);
+}
+.goods_quantity {
+    width: 200px;
+    height: 50px;
+    padding-top: 30px;
+}
+.qty {
+    width: 40px;
+    height: 35px;
+    text-align: center;
+    border: 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+  }
+  
+  /*
+  input.qtyplus {
+    width: 25px;
+    height: 35px;
+    border: 1px solid #aaa;
+    background: #f8f8f8;
+  }
+  
+  input.qtyminus {
+    width: 25px;
+    height: 35px;
+    border: 1px solid #aaa;
+    background: #f8f8f8;
+  } */
+  .ttl {
+    color: rgb(56, 48, 13);
+    font-size: 35px;
+    font-family: 微軟正黑體;
+    text-align: center; /* 文字置中 */
+    margin: 0 auto; /* 確保在父容器中水平置中 */
+    display: block; /* 確保 margin 屬性有效 */
+ }
+  .sandout {
+    display: flex; /* 彈性佈局，便於對齊 */
+    justify-content: center; /* 置中按鈕 */
+    margin-top: 10px; /* 上方留白 */
+    margin-bottom: 10px;
+  }
+  .send-button {
+    background-color: #4CAF50; /* 綠色背景 */
+    color: white; /* 白色文字 */
+    padding: 10px 20px; /* 內邊距，調整大小 */
+    font-size: 16px; /* 字體大小 */
+    font-family: 微軟正黑體, Arial, sans-serif; /* 字體樣式 */
+    border: none; /* 去掉邊框 */
+    border-radius: 5px; /* 圓角 */
+    cursor: pointer; /* 滑鼠移動變為手型 */
+    transition: background-color 0.3s ease; /* 漸變效果 */
+  }
+
+ .send-button:hover {
+    background-color: #45a049; /* 滑鼠懸停時的背景色 */
+  }
+
+  .comment {
+    display: flex;
+    flex-direction: column; /* 垂直排列子元素 */
+    align-items: center;    /* 子元素居中對齊 */
+    gap: 20px;              /* 元素間距 */
+    padding: 20px;
+    max-width: 600px;       /* 最大寬度，避免內容過寬 */
+    margin: 20px auto;      /* 居中對齊且有上下間距 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
+    border-radius: 8px;     /* 圓角 */
+    background-color: #f9f9f9; /* 背景顏色 */
+}
+
+.comment textarea {
+    width: 100%;            /* 佔滿容器寬度 */
+    resize: none;           /* 禁止調整大小 */
+    padding: 10px;
+    border: 1px solid #ccc; /* 邊框樣式 */
+    border-radius: 5px;     /* 圓角 */
+    font-size: 16px;
+    box-sizing: border-box; /* 包含內邊距和邊框 */
+}
+.bg2{
+    background:#EAE0CC;
+}
+.sandout input{
+    color: rgb(255, 255, 255);
+    background-color:cornflowerblue;
+    border:navy;
+    border-radius: 25px;
+    float: right;
+    width: 80px;
+    height: 30px;
+    margin-top: -40px;
+    margin-right: 350px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 1000;
+    cursor: pointer;
+}
+.sandout input:hover{
+    color:rgb(251, 253, 236);
+    background-color:navy;
+}
+.star {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    color: gold;
+  }
+.set img {
+    width: 65px;
+    height: 65px;
+}
+.star_s img {
+    width: 20px;
+    height: 20px;
+}
+
+.star_s {
+    margin-left: 780px;
+    margin-top: 35px;
+}
+
+.name {
+    font-size: 20px;
+    font-family: 微軟正黑體;
+    margin-left: 90px;
+    margin-top: -60px;
+}
+
+.date {
+    font-size: 15px;
+    font-family: sans-serif;
+    margin-left: 780px;
+   /* margin-top: -45px; */
+}
+
+.cont {
+    font-size: 18px;
+    font-family: 微軟正黑體;
+    margin-left: 90px;
+    margin-top: -30px;
+    margin-right: 190px;
+    line-height: 30px;
+}

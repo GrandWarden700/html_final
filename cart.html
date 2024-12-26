@@ -4,97 +4,348 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>購物車</title>
-    <link rel="stylesheet">
+
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+    
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            background-color: #B2B2A2;
             margin: 0;
             padding: 0;
         }
-
+    
         .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: #fff;
+            display: grid;
+            grid-template-rows: 5% 3fr 5fr 7%; 
+            grid-template-columns: 1fr; 
+            height: 100%; 
+        }
+    
+          /* HEADER部分 */
+        header {
+            background-color: #4D6A6D; 
+            grid-row: 1; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 75px; 
+            min-height: 70px; 
+            flex-wrap: nowrap;
+        }
+    
+        .search-box::placeholder {
+            font-size: 15px; 
+            color: #999; 
+            font-style: italic; 
+        }
+    
+        .search-container {
+            display: flex; 
+            gap: 5px; 
+        }
+    
+        .search-box {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 20px;    
+        }
+    
+        .search-button {
+            padding: 8px 16px;
+            background-color: #EAE0CC;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    
+        .search-button:hover {
+            background-color: #D6CDBA;
+        }
+    
+        .nav-links {
+            display: flex; 
+            gap: 15px; 
+            margin-left: 211px; 
+            align-items: center;
+            height: 40px;
+        }
+    
+    
+        .nav-links > a,
+        .dropdown > .title {
+            text-decoration: none; 
+            color: #EAE0CC; 
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px; /* 固定高度 */
+            box-sizing: border-box; /* 確保padding不會影響整體高度 */
+        }
+    
+        .nav-links a:hover,
+        .dropdown .title:hover {
+            background-color: #EAE0CC; 
+            color: #4D6A6D; 
+        }
+    
+        .dropdown {
+            position: relative;
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+    
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
+            left: 0;
+            background-color: #EAE0CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+            min-width: 150px;
+        }
+    
+        .dropdown-content a {
+            display: block;
+            color: #4D6A6D;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 15px;
+            text-align: center;
+        }
+    
+        .dropdown-content a:hover {
+            background-color: #4D6A6D;
+            color: #EAE0CC;
+        }
+    
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    
+        .user-links {
+            position: absolute; 
+            right: 100px; 
+            top: 15px; 
+            display: flex;
+            gap: 20px; 
+            font-size: 14px;
+        }
+    
+        .user-links a {
+            text-decoration: none;
+            color: #EAE0CC;
+            font-weight: bold;
+        }
+    
+        .user-links a:hover {
+            background-color: #EAE0CC;
+            color: #4D6A6D;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    
+        /* MAIN */
+        main {
+            flex-grow: 1; /* Allow main to take up available space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
+        }
+
+        .cart-container {
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            height: 475px;
+            width: 100%; /* Make container responsive */
+            background-image: url("img/repeat.webp"); /* Replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
         }
 
         h2 {
             text-align: center;
+            font-size: 28px; /* Increased font size */
+            color: #333;
+            margin-bottom: 30px;
+
         }
 
         .cart-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding: 20px 0; /* Increased padding */
         }
 
-        .cart-item p {
-            margin: 0;
+        .cart-item .item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item .item-details,
+        .cart-item .item-details span {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
         }
 
         .quantity {
             display: flex;
             align-items: center;
-            gap: 5px;
+            margin-right: 20px;
         }
 
         .quantity input {
             width: 50px;
             text-align: center;
+            margin: 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px; /* Adjusted font size */
         }
 
         .actions button {
-            background-color: #4CAF50;
+            background-color: #dc3545;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 8px 16px;
+            border-radius: 5px;
             cursor: pointer;
-        }
-
-        .actions button.remove {
-            background-color: #f44336;
+            font-size: 16px; /* Adjusted font size */
+            transition: background-color 0.3s ease;
+            margin-left: 125px;
         }
 
         .actions button:hover {
-            opacity: 0.9;
+            background-color: #c82333;
         }
 
         .total {
             text-align: right;
-            font-size: 1.2em;
-            margin-top: 20px;
+            font-size: 20px; /* Increased font size */
+            color: #333;
+            margin-top: 175px;
+            font-weight: bold;
         }
+
+        .checkout-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            width: 200px; /* 固定寬度 */
+            height: 50px; /* 固定高度 */
+            border-radius: 5px;
+            font-size: 16px; /* 根據按鈕大小調整字體 */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 40px auto; /* 上方間距並水平居中 */
+            display: block; /* 轉爲塊級元素以便居中 */
+            text-align: center; /* 確保內容居中 */
+            line-height: 50px; /* 垂直居中（與高度一致） */
+        }
+
+        .checkout-button:hover {
+            background-color: #218838;
+        }
+
+
+        /* FOOTER部分 */
+    
+        footer {
+    
+            background-color: #4D6A6D; 
+            grid-row: 4;     
+            color: #212529;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+    
+        footer a:hover {
+    
+            text-decoration: underline;
+        }
+    
+    
+        .back-to-top {
+    
+            display: block;
+            margin-top: 15px;
+            color: #333;
+            font-weight: bold;
+    
+        }
+    
+    
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
-            <!-- ... (header content from proto.html/style.css) ... -->
+            <div class="search-container">
+                <input type="text" placeholder="搜尋商品..." class="search-box">
+                <button class="search-button">搜尋</button>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">首頁</a>
+                <div class="dropdown">
+                    <div class="title">商品</div>
+                    <div class="dropdown-content">
+                        <a href="goods.html">All</a>
+                        <a href="product1.html">Kaweco</a>
+                        <a href="product2.html">Lamy</a>
+                        <a href="product3.html">Montreux</a>            
+                    </div>
+                </div>
+            </nav>
+            <div class="user-links">
+                <a href="login.html">登入</a>
+                <a href="register.html">註冊</a>
+                <a href="cart.html">購物車</a>
+            </div>
         </header>
-        <main>
-            <div id="cart-items"></div>
-            <div class="total">
-                總金額: <span id="total-price">0</span> 元
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <button onclick="checkout()">結帳</button>
-            </div>
-        </main>
-        <section>
-            <!-- ... (if needed) ... -->
-        </section>
-        <footer>
-            <!-- ... (footer content from proto.html/style.css) ... -->
-        </footer>
     </div>
-    <script src="/js/cart.js"></script>
+        <main class="rectangle">
+            <div class="cart-container">
+                <h2>您的購物車</h2>
+                <div id="cart-items">
+                    <!-- Cart items will be added here -->
+                </div>
+                <div class="total-checkout-container">
+                    <div class="total">
+                        總金額: <span id="total-price">0</span> 元
+                    </div>
+                    
+                </div>
+            </div>
+            <button class="checkout-button" onclick="checkout()">結帳</button>
+        </main>
+        <footer>
+            <div class="footer-content">
+              <p>© 2024 第十九組. All rights reserved.</p>
+              <p>聯絡我們：<a href="mailto:zwqq1891@gmail.com">zwqq1891@gmail.com</a></p>
+              <a href="#top" class="back-to-top">回到頂端 ↑</a>
+            </div>
+          </footer>
+        <script src="/js/cart.js"></script>
 </body>
 </html>

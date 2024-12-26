@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品頁面</title>
+    <title>Montreux</title>
 </head>
 <style>
     * {
@@ -33,192 +33,133 @@
         flex-wrap: nowrap;
     }
 
-    .search-box::placeholder {
-        font-size: 15px; 
-        color: #999; 
-        font-style: italic; 
-    }
+.search-box::placeholder {
+    font-size: 15px; 
+    color: #999; 
+    font-style: italic; 
+}
 
-    .search-container {
-        display: flex; 
-        gap: 5px; 
-    }
+.search-container {
+    display: flex; 
+    gap: 5px; 
+}
 
-    .search-box {
-        width: 300px;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 20px;    
-    }
+.search-box {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;    
+}
 
-    .search-button {
-        padding: 8px 16px;
-        background-color: #EAE0CC;
-        color: #333;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-    }
+.search-button {
+    padding: 8px 16px;
+    background-color: #EAE0CC;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
 
-    .search-button:hover {
-        background-color: #D6CDBA;
-    }
+.search-button:hover {
+    background-color: #D6CDBA;
+}
 
-    .nav-links {
-        display: flex; 
-        gap: 15px; 
-        margin-left: 211px; 
-        align-items: center;
-        height: 40px;
-    }
+.nav-links {
+    display: flex; 
+    gap: 15px; 
+    margin-left: 211px; 
+    align-items: center;
+    height: 40px;
+}
 
 
-    .nav-links > a,
-    .dropdown > .title {
-        text-decoration: none; 
-        color: #EAE0CC; 
-        font-size: 14px;
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40px; /* 固定高度 */
-        box-sizing: border-box; /* 確保padding不會影響整體高度 */
-    }
+.nav-links > a,
+.dropdown > .title {
+    text-decoration: none; 
+    color: #EAE0CC; 
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px; /* 固定高度 */
+    box-sizing: border-box; /* 確保padding不會影響整體高度 */
+}
 
-    .nav-links a:hover,
-    .dropdown .title:hover {
-        background-color: #EAE0CC; 
-        color: #4D6A6D; 
-    }
+.nav-links a:hover,
+.dropdown .title:hover {
+    background-color: #EAE0CC; 
+    color: #4D6A6D; 
+}
 
-    .dropdown {
-        position: relative;
-        display: flex;
-        height: 100%;
-        align-items: center;
-    }
+.dropdown {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
-        left: 0;
-        background-color: #EAE0CC;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        z-index: 10;
-        min-width: 150px;
-    }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
+    left: 0;
+    background-color: #EAE0CC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 10;
+    min-width: 150px;
+}
 
-    .dropdown-content a {
-        display: block;
-        color: #4D6A6D;
-        padding: 10px 15px;
-        text-decoration: none;
-        font-size: 15px;
-        text-align: center;
-    }
+.dropdown-content a {
+    display: block;
+    color: #4D6A6D;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+}
 
-    .dropdown-content a:hover {
-        background-color: #4D6A6D;
-        color: #EAE0CC;
-    }
+.dropdown-content a:hover {
+    background-color: #4D6A6D;
+    color: #EAE0CC;
+}
 
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-    .user-links {
-        position: absolute; 
-        right: 100px; 
-        top: 15px; 
-        display: flex;
-        gap: 20px; 
-        font-size: 14px;
-    }
+.user-links {
+    position: absolute; 
+    right: 100px; 
+    top: 15px; 
+    display: flex;
+    gap: 20px; 
+    font-size: 14px;
+}
 
-    .user-links a {
-        text-decoration: none;
-        color: #EAE0CC;
-        font-weight: bold;
-    }
+.user-links a {
+    text-decoration: none;
+    color: #EAE0CC;
+    font-weight: bold;
+}
 
-    .user-links a:hover {
-        background-color: #EAE0CC;
-        color: #4D6A6D;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-    /* main部分 */
-    main{
-        box-sizing: border-box;
-        margin: 0px;
-        background-image: url(img/background/CoupleSentences.jpg);
-    }
+.user-links a:hover {
+    background-color: #EAE0CC;
+    color: #4D6A6D;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
-    .slideshow-container {
-        max-width: 400px;
-        position: relative;
-        margin: 20px auto;
-    }
-    /*按鈕設計*/
-    .pre, .next {
-        position: absolute;
-        top: 50%;
-        padding: 20px;
-        width: auto;
-        color: white;
-        font-weight: bold;
-        font-size: 30px;
-        transition: 0.6s ease;
-    }
+    /* MAIN部分 */
 
-    .next { 
-        right: 0px;
-    }
-
-    /*滑鼠在按鈕上並改顏色*/
-    .pre:hover, .next:hover{
-        background-color: rgba(0, 0, 0, 0.786);
-    }
-
-    /*照片動畫*/
-    .mySlides{
-        animation: fade;
-        animation-duration: 1.5s;
-    }
-
-    @keyframes fade {
-        from {opacity: 0.4;}
-        to{opacity: 1;}
-    }
-
-    /*圓點*/
-    .dot {
-        position: relative;
-        height: 10px;
-        width: 10px;
-        margin: 0px 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-    }
-
-    .dot:hover, .active{
-        background-color: #717171;
-    }
-
-    /* section部分 */
-
-    section {
+    main {
         background-color: #B2B2A2; 
-        grid-row: 3; 
+        grid-row: 2/4; 
         width: 100vw;
         display: flex;
         flex-direction: column;
@@ -285,30 +226,30 @@
         display: none; /* 隱藏商品描述 */
       }
       .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 40px; /* 與父元素高度相同 */
-        left: 0;
-        background-color: #EAE0CC;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        z-index: 10;
-        min-width: 150px;
-    }
+    display: none;
+    position: absolute;
+    top: 40px; /* 與父元素高度相同 */
+    left: 0;
+    background-color: #EAE0CC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 10;
+    min-width: 150px;
+}
 
-    .dropdown {
-        position: relative;
-        height: 40px; /* 與其他導航項目相同的高度 */
-        display: flex;
-        align-items: center;
-    }
+.dropdown {
+    position: relative;
+    height: 40px; /* 與其他導航項目相同的高度 */
+    display: flex;
+    align-items: center;
+}
 
-    /* 确保下拉菜单项是块级元素 */
-    .dropdown-content a {
-        display: block;
-        padding: 10px 15px;
-        text-align: center;
-    }
+/* 确保下拉菜单项是块级元素 */
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+}
 
     .dropdown-content a:hover {
         background-color: #4D6A6D;
@@ -406,33 +347,6 @@
             </div>
         </header>
         <main>
-            <div class="slideshow-container">
-                <div class="mySlides fade">          
-                  <img src="img/kaweco/1.webp" style="width:100%">          
-                </div>
-            
-                <div class="mySlides fade">          
-                  <img src="img/lamy/1.webp" style="width:100%">          
-                </div>
-            
-                <div class="mySlides fade">         
-                  <img src="img/montreux/1.jpg" style="width:100%">          
-                </div>
-        
-                <!--左右按鈕-->
-                <div class="pre" onclick="plusSlides(-1)">❮</div> 
-                <div class="next" onclick="plusSlides(1)">❯</div>
-        
-            </div>      
-            
-            <!--顯示圓點-->
-            <div style="text-align: center;">
-              <span class="dot" onclick="currentSlide(0)"> </span>
-              <span class="dot" onclick="currentSlide(1)"> </span>
-              <span class="dot" onclick="currentSlide(2)"> </span>
-            </div>
-        </main>
-        <section>
               <div class="product-box">
                 <div class="product-div">
                   <img class="img" src="" alt="商品圖片" />
@@ -441,16 +355,14 @@
                   <span class="product-description"></span>
                 </div>
               </div>
-        </section>
+        </main>
         <footer>
             <div class="footer-content">
-              <p>© 2024 第十九組. All rights reserved.</p>
+              <p>© 2024 創造有限公司. All rights reserved.</p>
               <p>聯絡我們：<a href="mailto:zwqq1891@gmail.com">zwqq1891@gmail.com</a></p>
               <a href="#top" class="back-to-top">回到頂端 ↑</a>
             </div>
           </footer>
-        <script src="js/adslider.js"></script>
-        <script src="js/test.js"></script>
-        <script src="/js/search.js"></script>
+        <script src="js/montreux.js"></script>
 </body>
 </html>
