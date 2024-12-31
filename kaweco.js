@@ -5,7 +5,7 @@ container.innerHTML = ""; // 清空原本的範本
 // 設定特定品牌名稱
 const targetBrand = "Kaweco";
 
-fetch("http://127.0.0.1:5500/json/products.json", {
+fetch("json/products.json", {
   method: "GET",
 })
   .then(async (res) => {

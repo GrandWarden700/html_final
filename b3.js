@@ -13,7 +13,7 @@ const plusBtn = document.querySelector('.qtyplus');
 const minusBtn = document.querySelector('.qtyminus');
 
 // 載入商品資料
-fetch("http://127.0.0.1:5500/json/products.json")
+fetch("json/products.json")
   .then(response => response.json())
   .then(categories => {
     products = categories[1].product;

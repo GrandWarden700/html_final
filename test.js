@@ -2,9 +2,7 @@ const container = document.querySelector(".product-box");
 const templateProductDiv = container.querySelector(".product-div");
 container.innerHTML = ""; // 清空原本的範本
 
-fetch("http://127.0.0.1:5500/json/products.json", {
-  method: "GET",
-})
+fetch("json/products.json")
   .then(async (res) => {
     const response = await res.json();
 
