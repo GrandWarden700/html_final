@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品頁面</title>
+    <style>
+        @import url("css/bodycss.css");
+        @import url("css/bodycss2.css");
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+    
+        body {
+            background-color: #B2B2A2;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            display: grid;
+            grid-template-rows: 5% 3fr 5fr 7%; 
+            grid-template-columns: 1fr; 
+            height: 100%; 
+        }
+    
+          /* HEADER部分 */
+        header {
+            background-color: #4D6A6D; 
+            grid-row: 1; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 75px; 
+            min-height: 70px; 
+            flex-wrap: nowrap;
+        }
+    
+        .search-box::placeholder {
+            font-size: 15px; 
+            color: #999; 
+            font-style: italic; 
+        }
+    
+        .search-container {
+            display: flex; 
+            gap: 5px; 
+        }
+    
+        .search-box {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 20px;    
+        }
+    
+        .search-button {
+            padding: 8px 16px;
+            background-color: #EAE0CC;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    
+        .search-button:hover {
+            background-color: #D6CDBA;
+        }
+    
+        .nav-links {
+            display: flex; 
+            gap: 15px; 
+            margin-left: 211px; 
+            align-items: center;
+            height: 40px;
+        }
+    
+    
+        .nav-links > a,
+        .dropdown > .title {
+            text-decoration: none; 
+            color: #EAE0CC; 
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px; /* 固定高度 */
+            box-sizing: border-box; /* 確保padding不會影響整體高度 */
+        }
+    
+        .nav-links a:hover,
+        .dropdown .title:hover {
+            background-color: #EAE0CC; 
+            color: #4D6A6D; 
+        }
+    
+        .dropdown {
+            position: relative;
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+    
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
+            left: 0;
+            background-color: #EAE0CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+            min-width: 150px;
+        }
+    
+        .dropdown-content a {
+            display: block;
+            color: #4D6A6D;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 15px;
+            text-align: center;
+        }
+    
+        .dropdown-content a:hover {
+            background-color: #4D6A6D;
+            color: #EAE0CC;
+        }
+    
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    
+        .user-links {
+            position: absolute; 
+            right: 100px; 
+            top: 15px; 
+            display: flex;
+            gap: 20px; 
+            font-size: 14px;
+        }
+    
+        .user-links a {
+            text-decoration: none;
+            color: #EAE0CC;
+            font-weight: bold;
+        }
+    
+        .user-links a:hover {
+            background-color: #EAE0CC;
+            color: #4D6A6D;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    
+        /* MAIN部分 */
+    
+        main {
+            background-color: #B2B2A2; 
+            grid-row: 2/4; /* 第二行 */
+            position: relative; 
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 全屏高度 */
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 40px; /* 與父元素高度相同 */
+            left: 0;
+            background-color: #EAE0CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 10;
+            min-width: 150px;
+        }
+    
+        .dropdown {
+            position: relative;
+            height: 40px; /* 與其他導航項目相同的高度 */
+            display: flex;
+            align-items: center;
+        }
+    
+        /* 確保下彈選單 */
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            text-align: center;
+        }
+    
+        .dropdown-content a:hover {
+            background-color: #4D6A6D;
+            color: #EAE0CC;
+        }
+    
+        .dropdown:hover .dropdown-content {
+            display: block; /* 滑鼠懸停時顯示選單 */
+        }
+    
+        .rectangle {
+            width: 400px;
+            padding: 20px;
+            background-color: #EAE0CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            text-align: center;
+        }
+
+        /* FOOTER部分 */
+    
+        footer {
+    
+            background-color: #4D6A6D; 
+            grid-row: 4;     
+            color: #212529;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+    
+        footer a:hover {
+    
+            text-decoration: underline;
+        }
+    
+    
+        .back-to-top {
+    
+            display: block;
+            margin-top: 15px;
+            color: #333;
+            font-weight: bold;
+    
+        }
+    
+    
+    </style>
+</head>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<body>
+    <div class="container">
+        <header>
+            <div class="search-container">
+                <input type="text" placeholder="搜尋商品..." class="search-box">
+                <button class="search-button">搜尋</button>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">首頁</a>
+                <div class="dropdown">
+                    <div class="title">商品</div> 
+                    <div class="dropdown-content">
+                        <a href="goods.html">All</a>
+                        <a href="product1.html">Kaweco</a>
+                        <a href="product2.html">Lamy</a>
+                        <a href="product3.html">Montreux</a>            
+                    </div>
+                </div>
+            </nav>
+            <div class="user-links">
+                <a href="login.html">登入</a>
+                <a href="register.html">註冊</a>
+                <a href="cart.html">購物車</a>
+            </div>
+        </header>
+    </div>
+        <main>
+            <div class="product-container">
+                <div class="img_z">
+                <img class="img" src="" alt="商品圖片" /></div>
+                <div class="product-details">
+                <div class="title">
+                  <span class="product-title"></span>
+                </div>
+                <span class="product-price"></span>
+                <span class="product-description"></span>
+                </div>
+           
+            <form id='myform' method='POST' action='#'>
+                <label for="quantity">數量</label>
+                <input type='button' value='-' class='qtyminus' field='quantity' />
+                <input type='text' name='quantity' value='0' class='qty' />
+                <input type='button' value='+' class='qtyplus' field='quantity' />
+            </form>
+            <button class="add-to-cart">加入購物車</button>  
+            </div>
+            </div>    
+        </main>
+        <section class="bg2">
+            <hr>
+            <div class="comment">
+                <div class="star" id="star-rating">
+                    <!-- 找到所有的icon，並設立一個data-index，用來判斷點擊的是哪一個星星 -->
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      width="40"
+                      data-index="1"
+                      class="star-icon"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="2"
+                      width="40"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="3"
+                      width="40"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="4"
+                      width="40"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="5"
+                      width="40"></iconify-icon>
+                </div>
+                <textarea id="comment-input" rows="5" name="content" placeholder="歡迎留下您的評論..." disabled></textarea>
+                <div class="sandout">
+                    <button id="send-button" class="send-button" disabled>送出</button>
+                </div>
+                <p id="login-message" style="color: red;">請先登入以使用留言功能！</p>
+            </div>
+            <hr>
+            <div id="comments-section">
+                <!-- 留言會動態新增到此處 -->
+            </div>
+            <script  src="comment.js"></script><hr>
+                <div class="center-css">
+                    <div class="set">
+                        <img src="img/DefaultHeader.png" alt=""></div>
+                    <h3 class="name">客人1</h3>
+                    <p class="date">2024/12/20</p>
+                    <div class="star_s">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                    </div>
+                    <div class="cont">包裝與商品都很可愛！</div><br>
+                </div>
+                <hr>
+                <div class="center-css">
+                    <div class="set">
+                        <img src="img/DefaultHeader.png" alt=""></div>
+                    <h3 class="name">客人2</h3>
+                    <p class="date">2024/12/21</p>
+                    <div class="star_s">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/emptyStar.png" alt="">
+                    </div>
+                    <div class="cont">很適合拿來當伴手禮。</div><br>
+                </div>
+                <hr>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+              <p>© 2024 第十九組. All rights reserved.</p>
+              <p>聯絡我們：<a href="mailto:zwqq1891@gmail.com">zwqq1891@gmail.com</a></p>
+              <a href="#top" class="back-to-top">回到頂端 ↑</a>
+            </div>
+        </footer>
+        <script src="c4.js"></script>
+        <script src="userSession.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              // 找到所有最外層的div
+              const starRatings = document.querySelectorAll(".star");
+       
+              // 對每個星星評分區域設定事件
+              starRatings.forEach((starRating) => {
+                // 找到該評分區域內所有的icon
+                const starIcons = starRating.querySelectorAll(".star-icon");
+       
+                // 將所有的icon加上click事件
+                starIcons.forEach((starIcon) => {
+                  starIcon.addEventListener("click", function () {
+                    // 找到點擊的icon的data-index 並轉成數字
+                    const clickedIndex = parseInt(this.getAttribute("data-index"));
+       
+                    // starsIcons是一個陣列，所以可以用forEach來判斷 跑迴圈 全部都跑一遍
+                    starIcons.forEach((icon, index) => {
+                      // 如果index小於點擊的index，就加上selected的class，並且改變icon
+                      if (index < clickedIndex) {
+                        icon.setAttribute("icon", "material-symbols:star");
+                      }
+                      // 如果index小於點擊的index，就加上selected的class，並且改變icon 變成空心
+                      else {
+                        icon.setAttribute("icon", "material-symbols:star-outline");
+                      }
+                    });
+       
+                    // 在這裏你可以將 clickedIndex 送到後端，並更新資料庫
+                    console.log("Selected Rating: " + clickedIndex);
+                  });
+                });
+              });
+            });
+          </script>
+              <script src="userSession.js"></script>
+
+</body>
+</html>
