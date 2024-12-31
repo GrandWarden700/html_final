@@ -3,37 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>註冊頁面</title>
-    <script>
-        // 預設帳號資料初始化
-        if (!localStorage.getItem("accounts")) {
-            const defaultAccounts = {
-                "admin": "00000000",
-                "user1": "12345678"
-            };
-            localStorage.setItem("accounts", JSON.stringify(defaultAccounts));
-        }
-
-        function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // 從 LocalStorage 中取得帳號資料
-            const accounts = JSON.parse(localStorage.getItem("accounts"));
-
-            if (accounts[username] === password) {
-                // 儲存登入帳號
-                localStorage.setItem("loggedInUser", username);
-
-                // 跳轉到首頁
-                window.location.href = "index.html";
-            } else {
-                document.getElementById("message").innerHTML = 
-                    `<p style="color:red;">登入失敗，帳號或密碼錯誤。</p>`;
-            }
-        }
-    </script>    
+    <title>商品頁面</title>
     <style>
+        @import url("css/bodycss.css");
+        @import url("css/bodycss2.css");
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -185,9 +159,9 @@
             border-radius: 5px;
         }
     
-            /* MAIN部分 */
+        /* MAIN部分 */
     
-            main {
+        main {
             background-color: #B2B2A2; 
             grid-row: 2/4; /* 第二行 */
             position: relative; 
@@ -216,7 +190,7 @@
             align-items: center;
         }
     
-   
+        /* 確保下彈選單 */
         .dropdown-content a {
             display: block;
             padding: 10px 15px;
@@ -239,35 +213,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
             text-align: center;
         }
-    
-        .rectangle h2 {
-            margin-bottom: 20px;
-            color: #4D6A6D;
-        }
-    
-        .rectangle input {
-            width: calc(100% - 20px); /* 输入框宽度 */
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            outline: none; /* 移除默认焦点边框 */
-        }
-    
-        .rectangle button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4D6A6D;
-            color: #EAE0CC;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    
-        .rectangle button:hover {
-            background-color: #3B5052;
-        }
-    
-    
+
         /* FOOTER部分 */
     
         footer {
@@ -298,7 +244,7 @@
     
     </style>
 </head>
-
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <body>
     <div class="container">
         <header>
@@ -309,7 +255,7 @@
             <nav class="nav-links">
                 <a href="index.html">首頁</a>
                 <div class="dropdown">
-                    <div class="title">商品</div>  <!-- 改為 div 而不是 a 標籤 -->
+                    <div class="title">商品</div> 
                     <div class="dropdown-content">
                         <a href="goods.html">All</a>
                         <a href="product1.html">Kaweco</a>
@@ -326,20 +272,97 @@
         </header>
     </div>
         <main>
-            <div  class="rectangle">
-                <h2>登入頁面</h2>
-                <form onsubmit="event.preventDefault(); login();">
-                    <label for="username">帳號:</label><br>
-                    <input type="text" id="username" ><br>
-                    <label for="password">密碼:</label><br>
-                    <input type="password" id="password" required><br>
-                    <button type="submit">登入</button>
-                </form>
-                <div id="message"></div>
+            <div class="product-container">
+                <div class="img_z">
+                <img class="img" src="" alt="商品圖片" /></div>
+                <div class="product-details">
+                <div class="title">
+                  <span class="product-title"></span>
+                </div>
+                <span class="product-price"></span>
+                <span class="product-description"></span>
+                </div>
+           
+            <form id='myform' method='POST' action='#'>
+                <label for="quantity">數量</label>
+                <input type='button' value='-' class='qtyminus' field='quantity' />
+                <input type='text' name='quantity' value='0' class='qty' />
+                <input type='button' value='+' class='qtyplus' field='quantity' />
+            </form>
+            <button class="add-to-cart">加入購物車</button>  
             </div>
+            </div>    
         </main>
-        <section>
-
+        <section class="bg2">
+            <hr>
+            <h3 class="ttl">商品留言板</h3>
+            <div class="comment">
+                <div class="star" id="star-rating1">
+                    <!-- 找到所有的icon，並設立一個data-index，用來判斷點擊的是哪一個星星 -->
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      width="40"
+                      data-index="1"
+                      class="star-icon"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="2"
+                      width="40"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="3"
+                      width="40"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="4"
+                      width="40"></iconify-icon>
+                    <iconify-icon
+                      icon="material-symbols:star-outline"
+                      class="star-icon"
+                      data-index="5"
+                      width="40"></iconify-icon>
+                  </div>
+                <textarea rows="5" name="content" placeholder="歡迎留下您的評論..."></textarea>
+                <div class="sandout">
+                    <form method="post" action="">
+                        <button type="submit" class="send-button">送出</button>
+                    </form>    
+                </div>
+            </div>
+         </div><hr>
+                <div class="center-css">
+                    <div class="set">
+                        <img src="img/DefaultHeader.png" alt=""></div>
+                    <h3 class="name">客人1</h3>
+                    <p class="date">2024/12/20</p>
+                    <div class="star_s">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                    </div>
+                    <div class="cont">包裝與商品都很可愛！</div><br>
+                </div>
+                <hr>
+                <div class="center-css">
+                    <div class="set">
+                        <img src="img/DefaultHeader.png" alt=""></div>
+                    <h3 class="name">客人2</h3>
+                    <p class="date">2024/12/21</p>
+                    <div class="star_s">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/star.png" alt="">
+                        <img src="img/emptyStar.png" alt="">
+                    </div>
+                    <div class="cont">很適合拿來當伴手禮。</div><br>
+                </div>
+                <hr>
         </section>
 
         <footer>
@@ -348,8 +371,42 @@
               <p>聯絡我們：<a href="mailto:zwqq1891@gmail.com">zwqq1891@gmail.com</a></p>
               <a href="#top" class="back-to-top">回到頂端 ↑</a>
             </div>
-          </footer>
-          <script src="js/userSession.js"></script>
-
+        </footer>
+        <script src="/js/b3.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              // 找到所有最外層的div
+              const starRatings = document.querySelectorAll(".star");
+       
+              // 對每個星星評分區域設定事件
+              starRatings.forEach((starRating) => {
+                // 找到該評分區域內所有的icon
+                const starIcons = starRating.querySelectorAll(".star-icon");
+       
+                // 將所有的icon加上click事件
+                starIcons.forEach((starIcon) => {
+                  starIcon.addEventListener("click", function () {
+                    // 找到點擊的icon的data-index 並轉成數字
+                    const clickedIndex = parseInt(this.getAttribute("data-index"));
+       
+                    // starsIcons是一個陣列，所以可以用forEach來判斷 跑迴圈 全部都跑一遍
+                    starIcons.forEach((icon, index) => {
+                      // 如果index小於點擊的index，就加上selected的class，並且改變icon
+                      if (index < clickedIndex) {
+                        icon.setAttribute("icon", "material-symbols:star");
+                      }
+                      // 如果index小於點擊的index，就加上selected的class，並且改變icon 變成空心
+                      else {
+                        icon.setAttribute("icon", "material-symbols:star-outline");
+                      }
+                    });
+       
+                    // 在這裏你可以將 clickedIndex 送到後端，並更新資料庫
+                    console.log("Selected Rating: " + clickedIndex);
+                  });
+                });
+              });
+            });
+          </script>
 </body>
 </html>
