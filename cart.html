@@ -162,13 +162,14 @@
     /* MAIN部分 */
 
     main {
-            flex-grow: 1; /* Allow main to take up available space */
+            background-color: #B2B2A2; 
+            grid-row: 2/4; /* 第二行 */
+            position: relative; 
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-    }
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            min-height: 80vh; 
+        }
 
     .dropdown-content {
         display: none;
@@ -205,21 +206,83 @@
         display: block; /* 滑鼠懸停時顯示選單 */
     }
 
+    .rectangle {
+  width: 750px;
+  height: 450px;
+  margin-top: 22%;
+  transform: translateY(-50%);
+  opacity: 0.9;
+  font-family: "新細明體", "PMingLiU", serif;
+  padding: 10px; /* 減小 padding，讓滾動條更靠近內容 */
+  text-align: left;
+  overflow: hidden; /* 防止內容完全溢位 */
+  line-height: 1.6;
 
-        .cart-container {
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            max-width: 800px;
-            height: 475px;
-            width: 100%; /* Make container responsive */
-            background-image: url("img/background/repeat.webp"); /* Replace with your image path */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+  /* 自訂滾動條樣式 */
+  scrollbar-width: thin; /* 適用於 Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5; /* 設定滾動條顏色和背景 */
 
-        }
+  /* 滾動條樣式 for Webkit (Chrome, Edge, Safari) */
+}
+.rectangle::-webkit-scrollbar {
+  width: 8px; /* 滾動條寬度 */
+}
 
+.rectangle::-webkit-scrollbar-track {
+  background: #f5f5f5; /* 滾動條背景 */
+  border-radius: 10px; /* 圓角 */
+}
+
+.rectangle::-webkit-scrollbar-thumb {
+  background: #c1c1c1; /* 滾動條顏色 */
+  border-radius: 10px; /* 圓角 */
+}
+
+.rectangle::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8; /* 滾動條懸停時顏色 */
+}
+
+.cart-container {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px; /* 減少內邊距，確保滾動條更靠近內容 */
+  max-width: 800px;
+  height: 100%; /* 限制高度為父元素的高度 */
+  width: 100%;
+  background-image: url("img/background/repeat.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow-y: auto; /* 垂直捲動條確保內容可滾動 */
+  overflow-x: hidden; /* 禁止水準捲動條 */
+}
+#cart-items {
+  max-height: 300px; /* 可視區域的最大高度 */
+  overflow-y: auto; /* 單獨為商品清單啟用滾動 */
+  padding-right: 10px; /* 讓捲動條不會壓到內容 */
+}
+
+#cart-items::-webkit-scrollbar {
+  width: 8px;
+}
+
+#cart-items::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+#cart-items::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+#cart-items::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+        .rectangle p {
+           margin-top: 25px; /* 將段落文字往下移動 */
+        } 
         h2 {
             text-align: center;
             font-size: 28px; /* Increased font size */
@@ -310,9 +373,9 @@
         /* FOOTER部分 */
     
         footer {
-    
             background-color: #4D6A6D; 
             grid-row: 4;     
+            bottom:1%;
             color: #212529;
             padding: 20px;
             text-align: center;
@@ -364,20 +427,24 @@
             </div>
         </header>
     </div>
-    <main class="rectangle">
-        <div class="cart-container">
-            <h2>您的購物車</h2>
-            <div id="cart-items">
-                <!-- Cart items will be added here -->
-            </div>
-            <div class="total-checkout-container">
-                <div class="total">
-                    總金額: <span id="total-price">0</span> 元
+    <main>
+        <div class="rectangle">
+            <div class="cart-container">
+                <h2>您的購物車</h2>
+                <div id="cart-items">
+                    <!-- Cart items will be added here -->
+                </div>
+                <div class="total-checkout-container">
                 </div>
             </div>
         </div>
-        <button class="checkout-button" id="checkout-button" onclick="checkout()">結帳</button>
-        <p id="login-message" style="color: red; display: none;">請先登入或註冊以使用購物車功能！</p>
+        <div style="display: grid;grid-template-rows: auto;row-gap: 10px;margin-left: 10px;">
+            <div class="total" style="margin: 40px auto; display: block;text-align: center;">
+                        總金額: <span id="total-price">0</span> 元
+                    </div>
+            <button class="checkout-button" id="checkout-button" onclick="checkout()">結帳</button>
+            <p id="login-message" style="color: red; display: none;">請先登入或註冊以使用購物車功能！</p>
+        </div>
         </main>
         <footer>
             <div class="footer-content">
