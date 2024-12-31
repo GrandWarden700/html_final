@@ -18,25 +18,30 @@ fetch("json/products.json")  // 改成相對路徑
       ];
 
       selectedProducts.forEach((item) => {
-        const productDiv = templateProductDiv.cloneNode(true);
-        productDiv.style.display = "flex";
-        
+        // 創建外層連結元素
         const linkElement = document.createElement("a");
         linkElement.href = item.url;
         linkElement.target = "_blank";
+        linkElement.style.textDecoration = "none";
+        linkElement.style.color = "inherit";
+        
+        // 創建並設置商品div
+        const productDiv = templateProductDiv.cloneNode(true);
+        productDiv.style.display = "flex";
 
+        // 設置商品內容
         const imgElement = productDiv.querySelector(".img");
         imgElement.src = item.image;
         imgElement.alt = item.name;
         
-        linkElement.appendChild(imgElement);
-
         productDiv.querySelector(".product-title").textContent = item.name;
         productDiv.querySelector(".product-price").textContent = `NT$ ${item.price}`;
         productDiv.querySelector(".product-description").innerHTML = item.description;
 
-        productDiv.insertBefore(linkElement, productDiv.firstChild);
-        container.appendChild(productDiv);
+        // 將商品div放入連結元素中
+        linkElement.appendChild(productDiv);
+        // 將連結元素加入容器
+        container.appendChild(linkElement);
       });
     } catch (error) {
       console.error("處理商品數據時發生錯誤：", error);
