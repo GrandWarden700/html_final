@@ -1,131 +1,243 @@
-function renderCartItem(item, cartItemsContainer) { 
-  const cartItem = document.createElement("div");
-  cartItem.className = "cart-item";
-  cartItem.dataset.itemId = item.id;
+class ShoppingCartManager {
+  constructor() {
+      // DOM 元素
+      this.elements = {
+          cartItems: document.getElementById("cart-items"),
+          totalPrice: document.getElementById("total-price"),
+          loginMessage: document.getElementById("login-message"),
+          checkoutButton: document.getElementById("checkout-button")
+      };
 
-  cartItem.innerHTML = `
-      <p>${item.name}</p>
-      <div class="quantity">
-          <button class="decrease">-</button>
-          <input type="number" value="${item.quantity}" min="0" onchange="handleQuantityChange(${item.id}, this.value)">
-          <button class="increase">+</button>
-      </div>
-      <p class="item-total">${item.price * item.quantity} 元</p>
-      <div class="actions">
-          <button class="remove">移除</button>
-      </div>
-  `;
-  cartItem.querySelector(".decrease").addEventListener("click", () => updateQuantity(item.id, -1, cartItem));
-  cartItem.querySelector(".increase").addEventListener("click", () => updateQuantity(item.id, 1, cartItem));
-  cartItem.querySelector(".remove").addEventListener("click", () => removeItem(item.id));
+      // 初始化購物車數據
+      this.cart = this.getCart();
 
-  cartItemsContainer.appendChild(cartItem);
-}
+      this.init();
+  }
 
-function renderCart() {
-  const cartItemsContainer = document.getElementById("cart-items");
-  cartItemsContainer.innerHTML = "";
+  init() {
+      try {
+          this.updateLoginState();
+          this.renderCart();
+          this.setupEventListeners();
+      } catch (error) {
+          console.error("購物車初始化失敗:", error);
+          this.showError("購物車載入失敗，請重新整理頁面。");
+      }
+  }
 
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart.forEach(item => renderCartItem(item, cartItemsContainer));
-  updateTotalPrice();
-}
-
-function updateQuantity(id, change, cartItem) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const item = cart.find(i => i.id === id);
-  if (item) {
-      item.quantity = Math.max(0, item.quantity + change);
-
-      if (item.quantity === 0) {
-          removeItem(id);
-      } else {
-          cartItem.querySelector(".item-total").textContent = item.price * item.quantity + " 元";
-          cartItem.querySelector("input").value = item.quantity;
-          updateTotalPrice();
+  setupEventListeners() {
+      // 結帳按鈕事件
+      if (this.elements.checkoutButton) {
+          this.elements.checkoutButton.addEventListener('click', () => this.checkout());
       }
 
-      localStorage.setItem('cart', JSON.stringify(cart));
+      // 使用事件委託處理購物車項目的事件
+      if (this.elements.cartItems) {
+          this.elements.cartItems.addEventListener('click', (e) => {
+              const cartItem = e.target.closest('.cart-item');
+              if (!cartItem) return;
+
+              const itemId = cartItem.dataset.itemId;
+
+              if (e.target.classList.contains('decrease')) {
+                  this.updateQuantity(itemId, -1);
+              } else if (e.target.classList.contains('increase')) {
+                  this.updateQuantity(itemId, 1);
+              } else if (e.target.classList.contains('remove')) {
+                  this.removeItem(itemId);
+              }
+          });
+
+          // 處理數量輸入
+          this.elements.cartItems.addEventListener('change', (e) => {
+              if (e.target.type === 'number') {
+                  const cartItem = e.target.closest('.cart-item');
+                  if (cartItem) {
+                      this.handleQuantityChange(cartItem.dataset.itemId, e.target.value);
+                  }
+              }
+          });
+      }
   }
-}
 
-function handleQuantityChange(id, newValue) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const item = cart.find(i => i.id === id);
+  renderCartItem(item) {
+      const cartItem = document.createElement("div");
+      cartItem.className = "cart-item";
+      cartItem.dataset.itemId = item.id;
 
-  if (item) {
-      const quantity = parseInt(newValue, 10);
-      if (isNaN(quantity) || quantity < 0) {
-          alert("請輸入有效的數量");
-          document.querySelector(`.cart-item[data-item-id="${id}"] input`).value = item.quantity;
+      cartItem.innerHTML = `
+          <div class="item-info">
+              <p class="item-name">${this.escapeHtml(item.name)}</p>
+          </div>
+          <div class="quantity">
+              <button class="decrease" aria-label="減少數量">-</button>
+              <input type="number" 
+                     value="${item.quantity}" 
+                     min="1" 
+                     aria-label="商品數量"
+                     class="quantity-input">
+              <button class="increase" aria-label="增加數量">+</button>
+          </div>
+          <p class="item-total">${this.formatPrice(item.price * item.quantity)}</p>
+          <div class="actions">
+              <button class="remove" aria-label="移除商品">
+                  <span class="remove-text">移除</span>
+              </button>
+          </div>
+      `;
+
+      return cartItem;
+  }
+
+  renderCart() {
+      if (!this.elements.cartItems) return;
+
+      this.elements.cartItems.innerHTML = '';
+
+      if (this.cart.length === 0) {
+          this.elements.cartItems.innerHTML = '<div class="empty-cart">購物車是空的</div>';
           return;
       }
 
-      item.quantity = quantity;
-      const cartItem = document.querySelector(`.cart-item[data-item-id="${id}"]`);
-      cartItem.querySelector(".item-total").textContent = item.price * item.quantity + " 元";
+      this.cart.forEach(item => {
+          this.elements.cartItems.appendChild(this.renderCartItem(item));
+      });
 
-      updateTotalPrice();
-      localStorage.setItem('cart', JSON.stringify(cart));
+      this.updateTotalPrice();
   }
-}
 
-function removeItem(id) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const index = cart.findIndex(i => i.id === id);
-  if (index !== -1) {
-      cart.splice(index, 1);
-      const cartItemsContainer = document.getElementById("cart-items");
-      const cartItemToRemove = cartItemsContainer.querySelector(`.cart-item[data-item-id="${id}"]`);
+  updateQuantity(id, change) {
+      const item = this.cart.find(i => i.id === id);
+      if (!item) return;
 
-      if (cartItemToRemove) {
-          cartItemsContainer.removeChild(cartItemToRemove);
+      const newQuantity = Math.max(1, item.quantity + change);
+      item.quantity = newQuantity;
+
+      this.updateCartItemDisplay(id);
+      this.saveCart();
+  }
+
+  handleQuantityChange(id, newValue) {
+      const quantity = parseInt(newValue, 10);
+      if (isNaN(quantity) || quantity < 1) {
+          this.showError("請輸入有效的數量");
+          this.updateCartItemDisplay(id);
+          return;
       }
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateTotalPrice();
+
+      const item = this.cart.find(i => i.id === id);
+      if (item) {
+          item.quantity = quantity;
+          this.updateCartItemDisplay(id);
+          this.saveCart();
+      }
+  }
+
+  updateCartItemDisplay(id) {
+      const item = this.cart.find(i => i.id === id);
+      if (!item) return;
+
+      const cartItem = this.elements.cartItems.querySelector(`[data-item-id="${id}"]`);
+      if (!cartItem) return;
+
+      cartItem.querySelector('.quantity-input').value = item.quantity;
+      cartItem.querySelector('.item-total').textContent = this.formatPrice(item.price * item.quantity);
+
+      this.updateTotalPrice();
+  }
+
+  removeItem(id) {
+      const index = this.cart.findIndex(i => i.id === id);
+      if (index === -1) return;
+
+      this.cart.splice(index, 1);
+
+      const cartItem = this.elements.cartItems.querySelector(`[data-item-id="${id}"]`);
+      if (cartItem) {
+          cartItem.remove();
+      }
+
+      this.saveCart();
+      this.updateTotalPrice();
+
+      if (this.cart.length === 0) {
+          this.renderCart(); // 重新渲染以顯示空購物車訊息
+      }
+  }
+
+  updateTotalPrice() {
+      if (!this.elements.totalPrice) return;
+
+      const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      this.elements.totalPrice.textContent = this.formatPrice(total);
+  }
+
+  getCart() {
+      try {
+          return JSON.parse(localStorage.getItem('cart')) || [];
+      } catch (error) {
+          console.error("讀取購物車失敗:", error);
+          return [];
+      }
+  }
+
+  saveCart() {
+      try {
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+      } catch (error) {
+          console.error("保存購物車失敗:", error);
+          this.showError("購物車保存失敗，請稍後再試。");
+      }
+  }
+
+  updateLoginState() {
+      const loggedInUser = localStorage.getItem("loggedInUser");
+
+      if (this.elements.loginMessage) {
+          this.elements.loginMessage.style.display = loggedInUser ? 'none' : 'block';
+      }
+
+      if (this.elements.checkoutButton) {
+          this.elements.checkoutButton.disabled = !loggedInUser;
+      }
+  }
+
+  checkout() {
+      if (!localStorage.getItem("loggedInUser")) {
+          this.showError("請先登入以使用購物車功能！");
+          return;
+      }
+
+      if (this.cart.length === 0) {
+          this.showError("您的購物車是空的！");
+          return;
+      }
+
+      // 這裡可以添加實際的結帳邏輯
+      this.showSuccess("感謝您的購買！");
+      this.cart = [];
+      this.saveCart();
+      this.renderCart();
+  }
+
+  formatPrice(price) {
+      return `NT$ ${price.toLocaleString()}`;
+  }
+
+  escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+  }
+
+  showError(message) {
+      alert(message); 
+  }
+
+  showSuccess(message) {
+      alert(message); 
   }
 }
 
-function updateTotalPrice() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  let total = 0;
-  cart.forEach(item => {
-      total += item.price * item.quantity;
-  });
-  document.getElementById("total-price").textContent = total;
-}
-
-function checkout() {
-  const loggedInUser = localStorage.getItem("loggedInUser");
-  if (!loggedInUser) {
-      alert("請先登入以使用購物車功能！");
-      return;
-  }
-
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  if (cart.length === 0) {
-      alert("您的購物車是空的！");
-  } else {
-      alert("感謝您的購買！");
-      localStorage.setItem('cart', JSON.stringify([]));
-      renderCart();
-  }
-}
-
-function initCart() {
-  const loggedInUser = localStorage.getItem("loggedInUser");
-  const loginMessage = document.getElementById("login-message");
-  const checkoutButton = document.getElementById("checkout-button");
-
-  if (!loggedInUser) {
-      loginMessage.style.display = "block";
-      checkoutButton.disabled = true;
-  } else {
-      loginMessage.style.display = "none";
-      checkoutButton.disabled = false;
-  }
-
-  renderCart();
-}
-
-initCart();
+// 初始化購物車
+const cartManager = new ShoppingCartManager();
