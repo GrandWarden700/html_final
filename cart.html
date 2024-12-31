@@ -25,147 +25,186 @@
         }
     
           /* HEADER部分 */
-        header {
-            background-color: #4D6A6D; 
-            grid-row: 1; 
-            display: flex; 
-            align-items: center; 
-            padding: 0 75px; 
-            min-height: 70px; 
-            flex-wrap: nowrap;
-        }
-    
-        .search-box::placeholder {
-            font-size: 15px; 
-            color: #999; 
-            font-style: italic; 
-        }
-    
-        .search-container {
-            display: flex; 
-            gap: 5px; 
-        }
-    
-        .search-box {
-            width: 300px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 20px;    
-        }
-    
-        .search-button {
-            padding: 8px 16px;
-            background-color: #EAE0CC;
-            color: #333;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 15px;
-            cursor: pointer;
-        }
-    
-        .search-button:hover {
-            background-color: #D6CDBA;
-        }
-    
-        .nav-links {
-            display: flex; 
-            gap: 15px; 
-            margin-left: 211px; 
-            align-items: center;
-            height: 40px;
-        }
-    
-    
-        .nav-links > a,
-        .dropdown > .title {
-            text-decoration: none; 
-            color: #EAE0CC; 
-            font-size: 14px;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px; /* 固定高度 */
-            box-sizing: border-box; /* 確保padding不會影響整體高度 */
-        }
-    
-        .nav-links a:hover,
-        .dropdown .title:hover {
-            background-color: #EAE0CC; 
-            color: #4D6A6D; 
-        }
-    
-        .dropdown {
-            position: relative;
-            display: flex;
-            height: 100%;
-            align-items: center;
-        }
-    
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
-            left: 0;
-            background-color: #EAE0CC;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 10;
-            min-width: 150px;
-        }
-    
-        .dropdown-content a {
-            display: block;
-            color: #4D6A6D;
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 15px;
-            text-align: center;
-        }
-    
-        .dropdown-content a:hover {
-            background-color: #4D6A6D;
-            color: #EAE0CC;
-        }
-    
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-    
-        .user-links {
-            position: absolute; 
-            right: 100px; 
-            top: 15px; 
-            display: flex;
-            gap: 20px; 
-            font-size: 14px;
-        }
-    
-        .user-links a {
-            text-decoration: none;
-            color: #EAE0CC;
-            font-weight: bold;
-        }
-    
-        .user-links a:hover {
-            background-color: #EAE0CC;
-            color: #4D6A6D;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-    
-        /* MAIN */
-        main {
+    header {
+        background-color: #4D6A6D; 
+        grid-row: 1; 
+        display: flex; 
+        align-items: center; 
+        padding: 0 75px; 
+        min-height: 70px; 
+        flex-wrap: nowrap;
+        background: linear-gradient(to right, #4D6A6D, #3E5B58); /* 使用漸層效果 */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 添加陰影效果 */
+    }
+
+    .search-box::placeholder {
+        font-size: 15px; 
+        color: #999; 
+        font-style: italic; 
+    }
+
+    .search-container {
+        display: flex; 
+        gap: 5px; 
+    }
+
+    .search-box {
+        width: 300px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 20px;    
+    }
+
+    .search-button {
+        padding: 8px 16px;
+        background-color: #EAE0CC;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .search-button:hover {
+        background-color: #D6CDBA;
+    }
+
+    .nav-links {
+        display: flex; 
+        gap: 15px; 
+        margin-left: 211px; 
+        align-items: center;
+        height: 40px;
+    }
+
+
+    .nav-links > a,
+    .dropdown > .title {
+        text-decoration: none; 
+        color: #EAE0CC; 
+        font-size: 14px;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px; /* 固定高度 */
+        box-sizing: border-box; /* 確保padding不會影響整體高度 */
+    }
+
+    .nav-links a:hover,
+    .dropdown .title:hover {
+        background-color: #EAE0CC; 
+        color: #4D6A6D; 
+    }
+
+    .dropdown {
+        position: relative;
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: calc(100% + 5px); /* 調整下拉選單與按鈕的距離 */
+        left: 0;
+        background-color: #EAE0CC;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 10;
+        min-width: 150px;
+    }
+
+    .dropdown-content a {
+        display: block;
+        color: #4D6A6D;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #4D6A6D;
+        color: #EAE0CC;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .user-links {
+        position: absolute; 
+        right: 100px; 
+        top: 15px; 
+        display: flex;
+        gap: 20px; 
+        font-size: 14px;
+    }
+
+    .user-links a {
+        text-decoration: none;
+        color: #EAE0CC;
+        font-weight: bold;
+    }
+
+    .user-links a:hover {
+        background-color: #EAE0CC;
+        color: #4D6A6D;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    /* MAIN部分 */
+
+    main {
             flex-grow: 1; /* Allow main to take up available space */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
-        }
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 40px; /* 與父元素高度相同 */
+        left: 0;
+        background-color: #EAE0CC;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 10;
+        min-width: 150px;
+    }
+
+    .dropdown {
+        position: relative;
+        height: 40px; /* 與其他導航項目相同的高度 */
+        display: flex;
+        align-items: center;
+    }
+
+   
+    .dropdown-content a {
+        display: block;
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #4D6A6D;
+        color: #EAE0CC;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block; /* 滑鼠懸停時顯示選單 */
+    }
+
 
         .cart-container {
             border-radius: 8px;
