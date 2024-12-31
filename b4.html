@@ -295,8 +295,9 @@
         </main>
         <section class="bg2">
             <hr>
+            <h3 class="ttl">商品留言板</h3>
             <div class="comment">
-                <div class="star" id="star-rating">
+                <div class="star" id="star-rating1">
                     <!-- 找到所有的icon，並設立一個data-index，用來判斷點擊的是哪一個星星 -->
                     <iconify-icon
                       icon="material-symbols:star-outline"
@@ -323,18 +324,15 @@
                       class="star-icon"
                       data-index="5"
                       width="40"></iconify-icon>
-                </div>
-                <textarea id="comment-input" rows="5" name="content" placeholder="歡迎留下您的評論..." disabled></textarea>
+                  </div>
+                <textarea rows="5" name="content" placeholder="歡迎留下您的評論..."></textarea>
                 <div class="sandout">
-                    <button id="send-button" class="send-button" disabled>送出</button>
+                    <form method="post" action="">
+                        <button type="submit" class="send-button">送出</button>
+                    </form>    
                 </div>
-                <p id="login-message" style="color: red;">請先登入以使用留言功能！</p>
             </div>
-            <hr>
-            <div id="comments-section">
-                <!-- 留言會動態新增到此處 -->
-            </div>
-            <script  src="comment.js"></script><hr>
+         </div><hr>
                 <div class="center-css">
                     <div class="set">
                         <img src="img/DefaultHeader.png" alt=""></div>
@@ -374,7 +372,7 @@
               <a href="#top" class="back-to-top">回到頂端 ↑</a>
             </div>
         </footer>
-        <script src="c2.js"></script>
+        <script src="b4.js"></script>
         <script src="userSession.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -411,7 +409,5 @@
               });
             });
           </script>
-              <script src="userSession.js"></script>
-
 </body>
 </html>

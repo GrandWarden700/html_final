@@ -1,6 +1,6 @@
 // 商品頁面管理器
 class ProductPageManager {
-  constructor(categoryIndex = 0, productIndex = 0) {
+  constructor(categoryIndex = 1, productIndex = 5) {
       this.categoryIndex = categoryIndex;
       this.productIndex = productIndex;
       this.cart = this.getCart();
@@ -158,4 +158,4 @@ class ProductPageManager {
 
 // 使用方法：根據不同頁面初始化不同的商品類別
 // 在每個商品頁面的腳本中使用：
-const productPage = new ProductPageManager(/* categoryIndex, productIndex */);a1.js
+const productPage = new ProductPageManager(/* categoryIndex, productIndex */);
