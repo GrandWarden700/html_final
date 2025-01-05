@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const commentsSection = document.getElementById("comments-section");
         const commentHTML = `
+        <hr>
             <div class="center-css">
                 <div class="set">
                     <img src="img/DefaultHeader.png" alt="">
@@ -42,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <div class="cont">${commentText}</div><br>
             </div>
-            <hr>
         `;
         commentsSection.insertAdjacentHTML("beforeend", commentHTML);
 
