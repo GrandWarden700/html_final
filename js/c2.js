@@ -20,7 +20,6 @@ fetch("http://127.0.0.1:5500/json/products.json")
     products.forEach((item, index) => {
       item.id = index;
     });
-    
     product = products[1];
     updateProductDisplay();
   })

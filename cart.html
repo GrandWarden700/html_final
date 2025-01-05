@@ -207,78 +207,78 @@
     }
 
     .rectangle {
-  width: 750px;
-  height: 450px;
-  margin-top: 22%;
-  transform: translateY(-50%);
-  opacity: 0.9;
-  font-family: "新細明體", "PMingLiU", serif;
-  padding: 10px; /* 減小 padding，讓滾動條更靠近內容 */
-  text-align: left;
-  overflow: hidden; /* 防止內容完全溢位 */
-  line-height: 1.6;
+        width: 750px;
+        height: 450px;
+        margin-top: 22%;
+        transform: translateY(-50%);
+        opacity: 0.9;
+        font-family: "新細明體", "PMingLiU", serif;
+        padding: 10px; /* 減小 padding，讓滾動條更靠近內容 */
+        text-align: left;
+        overflow: hidden; /* 防止內容完全溢位 */
+        line-height: 1.6;
 
   /* 自訂滾動條樣式 */
-  scrollbar-width: thin; /* 適用於 Firefox */
-  scrollbar-color: #c1c1c1 #f5f5f5; /* 設定滾動條顏色和背景 */
+        scrollbar-width: thin; /* 適用於 Firefox */
+        scrollbar-color: #c1c1c1 #f5f5f5; /* 設定滾動條顏色和背景 */
 
   /* 滾動條樣式 for Webkit (Chrome, Edge, Safari) */
-}
-.rectangle::-webkit-scrollbar {
-  width: 8px; /* 滾動條寬度 */
-}
+    }
+    .rectangle::-webkit-scrollbar {
+        width: 8px; /* 滾動條寬度 */
+    }
 
-.rectangle::-webkit-scrollbar-track {
-  background: #f5f5f5; /* 滾動條背景 */
-  border-radius: 10px; /* 圓角 */
-}
+    .rectangle::-webkit-scrollbar-track {
+        background: #f5f5f5; /* 滾動條背景 */
+        border-radius: 10px; /* 圓角 */
+    }
 
-.rectangle::-webkit-scrollbar-thumb {
-  background: #c1c1c1; /* 滾動條顏色 */
-  border-radius: 10px; /* 圓角 */
-}
+    .rectangle::-webkit-scrollbar-thumb {
+        background: #c1c1c1; /* 滾動條顏色 */
+        border-radius: 10px; /* 圓角 */
+    }
 
-.rectangle::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8; /* 滾動條懸停時顏色 */
-}
+    .rectangle::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8; /* 滾動條懸停時顏色 */
+    }
 
-.cart-container {
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 10px; /* 減少內邊距，確保滾動條更靠近內容 */
-  max-width: 800px;
-  height: 100%; /* 限制高度為父元素的高度 */
-  width: 100%;
-  background-image: url("img/background/repeat.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow-y: auto; /* 垂直捲動條確保內容可滾動 */
-  overflow-x: hidden; /* 禁止水準捲動條 */
-}
-#cart-items {
-  max-height: 300px; /* 可視區域的最大高度 */
-  overflow-y: auto; /* 單獨為商品清單啟用滾動 */
-  padding-right: 10px; /* 讓捲動條不會壓到內容 */
-}
+    .cart-container {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 10px; /* 減少內邊距，確保滾動條更靠近內容 */
+        max-width: 800px;
+        height: 100%; /* 限制高度為父元素的高度 */
+        width: 100%;
+        background-image: url("img/background/repeat.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow-y: auto; /* 垂直捲動條確保內容可滾動 */
+        overflow-x: hidden; /* 禁止水準捲動條 */
+    }
+    #cart-items {
+        max-height: 300px; /* 可視區域的最大高度 */
+        overflow-y: auto; /* 單獨為商品清單啟用滾動 */
+        padding-right: 10px; /* 讓捲動條不會壓到內容 */
+    }
 
-#cart-items::-webkit-scrollbar {
-  width: 8px;
-}
+    #cart-items::-webkit-scrollbar {
+        width: 8px;
+    }
 
-#cart-items::-webkit-scrollbar-track {
-  background: #f5f5f5;
-  border-radius: 10px;
-}
+    #cart-items::-webkit-scrollbar-track {
+        background: #f5f5f5;
+        border-radius: 10px;
+    }
 
-#cart-items::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 10px;
-}
+    #cart-items::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 10px;
+    }
 
-#cart-items::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
+    #cart-items::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
 
         .rectangle p {
            margin-top: 25px; /* 將段落文字往下移動 */
@@ -362,16 +362,13 @@
             display: block; /* 转为块级元素以便居中 */
             text-align: center; /* 确保内容居中 */
             line-height: 50px; /* 垂直居中（与高度一致） */
-}
-
+        }
 
         .checkout-button:hover {
             background-color: #218838;
         }
 
-
         /* FOOTER部分 */
-    
         footer {
             background-color: #4D6A6D; 
             grid-row: 4;     
@@ -383,21 +380,16 @@
         }
     
         footer a:hover {
-    
             text-decoration: underline;
         }
     
     
         .back-to-top {
-    
             display: block;
             margin-top: 15px;
             color: #333;
             font-weight: bold;
-    
         }
-    
-    
     </style>
 </head>
 
@@ -453,8 +445,8 @@
               <a href="#top" class="back-to-top">回到頂端 ↑</a>
             </div>
           </footer>
-        <script src="cart.js"></script>
-        <script src="userSession.js"></script>
+        <script src="js/cart.js"></script>
+        <script src="js/userSession.js"></script>
 
 </body>
 </html>

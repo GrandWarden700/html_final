@@ -76,7 +76,6 @@
             height: 40px;
         }
     
-    
         .nav-links > a,
         .dropdown > .title {
             text-decoration: none; 
@@ -158,7 +157,6 @@
         }
     
         /* MAIN部分 */
-    
         main {
             background-color: #B2B2A2; 
             grid-row: 2/4; /* 第二行 */
@@ -252,9 +250,7 @@
         }
 
         /* FOOTER部分 */
-    
         footer {
-    
             background-color: #4D6A6D; 
             grid-row: 4;     
             color: #212529;
@@ -264,24 +260,17 @@
         }
     
         footer a:hover {
-    
             text-decoration: underline;
         }
     
-    
         .back-to-top {
-    
             display: block;
             margin-top: 15px;
             color: #333;
             font-weight: bold;
-    
         }
-    
-    
     </style>
 </head>
-
 <body>
     <div class="container">
         <header>
@@ -334,7 +323,7 @@
               <a href="#top" class="back-to-top">回到頂端 ↑</a>
             </div>
           </footer>
-          <script src="userSession.js"></script>
+          <script src="js/userSession.js"></script>
           <script>
             var duration = 10 * 1000;
     var animationEnd = Date.now() + duration;
@@ -357,6 +346,5 @@
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
     }, 250);
         </script>
-
 </body>
 </html>
