@@ -1,6 +1,6 @@
 // 商品頁面管理器
 class ProductPageManager {
-  constructor(categoryIndex = 1, productIndex = 1) {
+  constructor(categoryIndex = 1, productIndex = 4) {
       this.categoryIndex = categoryIndex;
       this.productIndex = productIndex;
       this.cart = this.getCart();
