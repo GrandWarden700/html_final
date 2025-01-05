@@ -5,7 +5,7 @@ container.innerHTML = ""; // 清空原本的範本
 // 設定特定品牌名稱
 const targetBrand = "montreux";
 
-fetch("http://127.0.0.1:5500/json/products.json", {
+fetch("json/products.json", {
   method: "GET",
 })
   .then(async (res) => {
@@ -26,14 +26,20 @@ fetch("http://127.0.0.1:5500/json/products.json", {
     categoryTitle.textContent = targetCategory.category;
     container.appendChild(categoryTitle);
 
-    // 商品顯示排版
-    const rowDiv = document.createElement("div");
-    rowDiv.style.display = "flex";
-    rowDiv.style.flexWrap = "wrap"; // 商品換行
-    rowDiv.style.gap = "10px"; // 商品間距
+    let currentRow = null; // 用來追蹤當前的 row
+    let productCount = 0;  // 商品計數器
 
     // 生成每個商品
     targetCategory.product.forEach((item) => {
+      if (productCount % 5 === 0) {
+        // 每 5 個商品新建一個 row
+        currentRow = document.createElement("div");
+        currentRow.style.display = "flex";
+        currentRow.style.gap = "10px"; // 商品間距
+        currentRow.style.flexWrap = "nowrap"; // 確保一行最多 5 個
+        container.appendChild(currentRow);
+      }
+
       // 創建商品區塊
       const productDiv = templateProductDiv.cloneNode(true);
       productDiv.style.display = "flex";
@@ -57,13 +63,12 @@ fetch("http://127.0.0.1:5500/json/products.json", {
         description.style.display = "none";
       }
 
-      // 將商品區塊添加到連結，連結添加到行
+      // 將商品區塊添加到連結，連結添加到當前的 row
       productLink.appendChild(productDiv);
-      rowDiv.appendChild(productLink);
-    });
+      currentRow.appendChild(productLink);
 
-    // 把行加入容器
-    container.appendChild(rowDiv);
+      productCount++; // 增加商品計數器
+    });
   })
   .catch((err) => {
     console.log("JSON 資料載入失敗：", err);
