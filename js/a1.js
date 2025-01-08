@@ -115,17 +115,17 @@ class ProductPageManager {
       }
   }
 
-  // 保存購物車
+  // 儲存購物車
   saveCart() {
       try {
           localStorage.setItem('cart', JSON.stringify(this.cart));
       } catch (error) {
-          console.error("保存購物車失敗:", error);
-          this.showError("購物車保存失敗，請稍後再試。");
+          console.error("儲存存購物車失敗:", error);
+          this.showError("購物車儲存失敗，請稍後再試。");
       }
   }
 
-  // 添加到購物車
+  // 新增到購物車
   addToCart() {
       const quantity = parseInt(this.elements.qtyInput.value) || 1;
       const existingItem = this.cart.find(item => item.id === this.product.id);
@@ -138,10 +138,10 @@ class ProductPageManager {
           }
 
           this.saveCart();
-          this.showSuccess("商品已添加到購物車！");
+          this.showSuccess("商品已新增到購物車！");
       } catch (error) {
-          console.error("添加商品到購物車失敗:", error);
-          this.showError("添加商品失敗，請稍後再試。");
+          console.error("新增商品到購物車失敗:", error);
+          this.showError("新增商品失敗，請稍後再試。");
       }
   }
 

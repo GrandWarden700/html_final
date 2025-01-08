@@ -185,8 +185,8 @@ class ShoppingCartManager {
       try {
           localStorage.setItem('cart', JSON.stringify(this.cart));
       } catch (error) {
-          console.error("保存購物車失敗:", error);
-          this.showError("購物車保存失敗，請稍後再試。");
+          console.error("儲存購物車失敗:", error);
+          this.showError("購物車儲存失敗，請稍後再試。");
       }
   }
 
@@ -213,7 +213,7 @@ class ShoppingCartManager {
           return;
       }
 
-      // 這裡可以添加實際的結帳邏輯
+      // 這裡可以新增實際的結帳邏輯
       this.showSuccess("感謝您的購買！");
       this.cart = [];
       this.saveCart();

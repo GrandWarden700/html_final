@@ -6,9 +6,9 @@ fetch("json/products.json")
   .then(async (res) => {
     const response = await res.json();
 
-    // 動態生成商品，包含 category 分類
+    // 動態產生商品，包含 category 分類
     response.forEach((categoryItem) => {
-      // 添加分類標題
+      // 新增分類標題
       const categoryTitle = document.createElement("h2");
       categoryTitle.textContent = categoryItem.category;
       container.appendChild(categoryTitle);
@@ -22,7 +22,7 @@ fetch("json/products.json")
       rowDiv.style.flexWrap = "wrap"; // 商品換行
       rowDiv.style.gap = "10px"; // 商品間距
 
-      // 生成每個商品
+      // 產生每個商品
       for (let i = 0; i < productCount; i++) {
         const item = categoryItem.product[i];
 

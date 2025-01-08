@@ -21,7 +21,7 @@ fetch("json/products.json", {
       return;
     }
 
-    // 添加分類標題
+    // 新增分類標題
     const categoryTitle = document.createElement("h2");
     categoryTitle.textContent = targetCategory.category;
     container.appendChild(categoryTitle);
@@ -29,7 +29,7 @@ fetch("json/products.json", {
     let currentRow = null; // 用來追蹤當前的 row
     let productCount = 0;  // 商品計數器
 
-    // 生成每個商品
+    // 產生每個商品
     targetCategory.product.forEach((item) => {
       if (productCount % 5 === 0) {
         // 每 5 個商品新建一個 row
@@ -63,7 +63,7 @@ fetch("json/products.json", {
         description.style.display = "none";
       }
 
-      // 將商品區塊添加到連結，連結添加到當前的 row
+      // 將商品區塊新增到連結，連結新增到當前的 row
       productLink.appendChild(productDiv);
       currentRow.appendChild(productLink);
 
